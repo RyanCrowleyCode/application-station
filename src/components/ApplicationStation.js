@@ -40,7 +40,7 @@ class ApplicationStation extends Component {
         state with user information. */
     setUser = (authObj) => {
         localStorage.setItem("appStationCred", true)
-        localStorage.setItem("token", authObj.token)
+        localStorage.setItem("appStationToken", authObj.token)
         this.setState({
             isLoggedIn: this.isAuthenticated()
         })
