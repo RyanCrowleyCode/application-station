@@ -24,7 +24,7 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 // COMPONENTS
-// import NavBar from './nav/NavBar'
+import NavBar from './navigation/NavBar'
 // import ApplicationViews from './ApplicationViews'
 
 
@@ -56,7 +56,7 @@ class ApplicationStation extends Component {
 
     // check for logged in user on re-render
     componentDidMount() {
-        this.clearUser()
+        this.setUser()
         this.setState({ isLoggedIn: this.isAuthenticated() })
     }
 
@@ -65,7 +65,10 @@ class ApplicationStation extends Component {
         console.log("RENDER: IS LOGGED IN: ", this.state.isLoggedIn)
         return (
             <React.Fragment>
-                {/* <NavBar /> */}
+                <NavBar
+                    isLoggedIn={this.state.isLoggedIn}
+                    clearUser={this.clearUser}
+                />
                 {/* <ApplicationViews /> */}
             </React.Fragment>
         )

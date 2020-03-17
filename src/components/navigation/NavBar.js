@@ -1,0 +1,54 @@
+/*
+    NavBar.js
+
+    Purpose:    This component is responsible for rendering the NavBar.
+                NavBar will render dynamically based on whether a user is
+                logged in or not. NavBar handles the logout functionality.
+
+    Author(s): Ryan Crowley
+*/
+
+// REACT
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
+// STYLES
+
+class NavBar extends Component {
+    render() {
+        return (
+            <nav className="navbar flex-md-nowrap p-0 shadow">
+                <div className="brand">
+                    <h4>Application Station</h4>
+                </div>
+                {this.props.isLoggedIn ?
+                    <ul className="nav nav-pills nav-fill">
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/">Applications</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/events">Events</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/questions">Questions</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" onClick={this.props.clearUser} to="/">Logout</Link>
+                        </li>
+                    </ul>
+                    :
+                    <ul className="nav nav-pills nav-fill">
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/login">Login</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/register">Register</Link>
+                        </li>
+                    </ul>
+                }
+            </nav>
+        )
+    }
+}
+
+export default NavBar
