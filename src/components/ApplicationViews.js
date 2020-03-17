@@ -43,6 +43,15 @@ class ApplicationViews extends Component {
                         :
                         <Redirect to="/" />
                 }} />
+                <Route exact path="/" render={props => {
+                    return this.props.isLoggedIn ?
+                        <ApplicationList
+                            getLoggedInUser={this.props.getLoggedInUser}
+                            {...props}
+                        />
+                        :
+                        <Redirect to="/login" />
+                }} />
                 <Route exact path="/applications" render={props => {
                     return this.props.isLoggedIn ?
                         <ApplicationList

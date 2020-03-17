@@ -25,7 +25,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 // COMPONENTS
 import NavBar from './navigation/NavBar'
-// import ApplicationViews from './ApplicationViews'
+import ApplicationViews from './ApplicationViews'
 
 
 class ApplicationStation extends Component {
@@ -38,9 +38,9 @@ class ApplicationStation extends Component {
 
     /*  adds user info into local storage, calls isAuthenticated, and updates 
         state with user information. */
-    setUser = () => {
+    setUser = (authObj) => {
         localStorage.setItem("appStationCred", true)
-        // localStorage.setItem("token", authObj.token)
+        localStorage.setItem("token", authObj.token)
         this.setState({
             isLoggedIn: this.isAuthenticated()
         })
@@ -56,20 +56,19 @@ class ApplicationStation extends Component {
 
     // check for logged in user on re-render
     componentDidMount() {
-        this.setUser()
         this.setState({ isLoggedIn: this.isAuthenticated() })
     }
 
     render() {
-        console.log("RENDER IS AUTH: ", this.isAuthenticated())
-        console.log("RENDER: IS LOGGED IN: ", this.state.isLoggedIn)
         return (
             <React.Fragment>
                 <NavBar
                     isLoggedIn={this.state.isLoggedIn}
                     clearUser={this.clearUser}
                 />
-                {/* <ApplicationViews /> */}
+                <ApplicationViews
+                    isLoggedIn={this.state.isLoggedIn}
+                />
             </React.Fragment>
         )
     }
