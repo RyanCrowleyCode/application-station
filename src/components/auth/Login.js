@@ -10,6 +10,9 @@
 // REACT
 import React, { Component } from 'react'
 
+// API
+import authApiManager from './authApiManager'
+
 // STYLES
 
 
@@ -27,8 +30,19 @@ class Login extends Component {
     // Login the user when they press the login button
     handleLogin = e => {
         e.preventDefault()
-        const { loginName, password } = this.state
-        
+
+        const credentials = {
+            "username": this.state.loginName,
+            "password": this.state.password
+        }
+
+        authApiManager.login(credentials)
+            .then(() => {
+                if (this.props.isAuthenticated()) {
+                    this.props.loginUser()
+                    this.props.history.push("/")
+                }
+            })
     }
 
 
