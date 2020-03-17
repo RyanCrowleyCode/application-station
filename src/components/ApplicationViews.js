@@ -29,7 +29,8 @@ class ApplicationViews extends Component {
                 <Route exact path="/login" render={props => {
                     return !this.props.isLoggedIn ?
                         <Login
-                            setUser={this.props.setUser}
+                            isAuthenticated={this.props.isAuthenticated}
+                            loginUser={this.props.loginUser}
                             {...props} />
                         :
                         <Redirect to="/" />
@@ -37,8 +38,9 @@ class ApplicationViews extends Component {
                 <Route exact path="/register" render={props => {
                     return !this.props.isLoggedIn ?
                         <Register
-                            setUser={this.props.setUser}
-                            {...props} 
+                            isAuthenticated={this.props.isAuthenticated}
+                            loginUser={this.props.loginUser}
+                            {...props}
                         />
                         :
                         <Redirect to="/" />
@@ -99,7 +101,7 @@ class ApplicationViews extends Component {
                         :
                         <Redirect to="/login" />
                 }} />
-                
+
             </React.Fragment>
         )
     }

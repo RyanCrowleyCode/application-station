@@ -35,21 +35,16 @@ class ApplicationStation extends Component {
 
     isAuthenticated = () => Boolean(localStorage.getItem("appStationCred"))
 
-
-    /*  adds user info into local storage, calls isAuthenticated, and updates 
-        state with user information. */
-    setUser = (authObj) => {
-        localStorage.setItem("appStationCred", true)
-        localStorage.setItem("appStationToken", authObj.token)
-        this.setState({
-            isLoggedIn: this.isAuthenticated()
-        })
+    // updates state for isLoggedIn to true when logged in
+    loginUser = () => {
+        this.setState({ isLoggedIn: this.isAuthenticated() })    
     }
 
 
     // handles logout functionality
     clearUser = () => {
         localStorage.removeItem('appStationCred')
+        localStorage.removeItem('appStationToken')
         this.setState({ isLoggedIn: this.isAuthenticated() })
     }
 
@@ -65,8 +60,10 @@ class ApplicationStation extends Component {
                 <NavBar
                     isLoggedIn={this.state.isLoggedIn}
                     clearUser={this.clearUser}
-                />
+                    />
                 <ApplicationViews
+                    isAuthenticated={this.isAuthenticated}
+                    loginUser={this.loginUser}
                     isLoggedIn={this.state.isLoggedIn}
                 />
             </React.Fragment>
