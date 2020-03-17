@@ -82,7 +82,7 @@ class ApplicationViews extends Component {
                 }} />
                 <Route exact path="/questions/:questionId(\d+)" render={props => {
                     return this.props.isLoggedIn ?
-                        <ApplicationDetail
+                        <QuestionDetail
                             questionId={props.match.params.questionId}
                             getLoggedInUser={this.props.getLoggedInUser}
                             {...props}
