@@ -22,7 +22,7 @@ class ApplicationCard extends Component {
     now = new Date().toISOString()
 
     state = {
-        lastEvent: null,
+        previousEvent: null,
         nextEvent: null,
         pastEvents: [],
         futureEvents: []
@@ -37,11 +37,11 @@ class ApplicationCard extends Component {
         })
     }
 
-    // find lastEvent and nextEvent
+    // find previousEvent and nextEvent
     setAdjacentEvents = (pastEvents, futureEvents) => {
-        // if any past events, choose last as lastEvent
+        // if any past events, choose last as previousEvent
         if (pastEvents.length > 0) {
-            this.setState({ lastEvent: pastEvents[pastEvents.length - 1] })
+            this.setState({ previousEvent: pastEvents[pastEvents.length - 1] })
         }
         // if any future events, choose first as nextEvent
         if (futureEvents.length > 0) {
@@ -56,13 +56,13 @@ class ApplicationCard extends Component {
                 // sort events into past and future
                 this.sortEvents(events)
 
-                // assign lastEvent and nextEvent
+                // assign previousEvent and nextEvent
                 this.setAdjacentEvents(this.state.pastEvents, this.state.futureEvents)
             })
     }
 
     render() {
-        const { lastEvent, nextEvent } = this.state
+        const { previousEvent, nextEvent } = this.state
         return (
             <React.Fragment>
                 <div className="app-card-top">
@@ -72,10 +72,10 @@ class ApplicationCard extends Component {
                     <p>Status: {this.job.status.status}</p>
                     <p>Link: <a href={this.job.link} target="_blank" rel="noopener noreferrer">{this.job.link}</a></p>
 
-                    {lastEvent ?
+                    {previousEvent ?
                         <p>
-                            Last Event: ({lastEvent.start_time})
-                            <br />{lastEvent.details}
+                            Previous Event: ({previousEvent.start_time})
+                            <br />{previousEvent.details}
                         </p>
                         : null
                     }
