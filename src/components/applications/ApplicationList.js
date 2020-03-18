@@ -48,7 +48,6 @@ class ApplicationList extends Component {
                             job={job}
                         />
                     )}
-
                 </section>
             </React.Fragment>
         )
