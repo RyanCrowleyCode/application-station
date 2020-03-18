@@ -12,10 +12,45 @@
 // REACT
 import React, { Component } from 'react'
 
+// COMPONENTS
+import ApplicationCard from './ApplicationCard'
+
+// DATA
+import apiManager from '../../modules/apiManager'
+
 class ApplicationList extends Component {
+    state = {
+        applications: []
+    }
+
+
+    // gets applications for user
+    getApplications = () => {
+        apiManager.get("jobs")
+            .then(jobs => {
+                this.setState({ applications: jobs })
+            })
+    }
+
+    componentDidMount() {
+        this.getApplications()
+    }
+
     render() {
-        return(
-            <h1>Application List</h1>
+        console.log("APPLICATIONS: ", this.state.applications)
+        return (
+            <React.Fragment>
+                <h1>My Applications</h1>
+                <section className="application-list">
+                    {this.state.applications.map(job =>
+                        <ApplicationCard
+                            key={job.id}
+                            job={job}
+                        />
+                    )}
+
+                </section>
+            </React.Fragment>
         )
     }
 }
