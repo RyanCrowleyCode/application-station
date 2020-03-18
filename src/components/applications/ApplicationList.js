@@ -37,7 +37,6 @@ class ApplicationList extends Component {
     }
 
     render() {
-        console.log("APPLICATIONS: ", this.state.applications)
         return (
             <React.Fragment>
                 <h1>My Applications</h1>
