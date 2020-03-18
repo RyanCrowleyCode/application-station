@@ -58,12 +58,12 @@ export default {
         })
             .then(response => response.json())
             .then(response => {
-                if ("token" in res) {
+                if ("token" in response) {
                     // place token in local storage and log in the user
                     localStorage.setItem("appStationToken", response.token)
                     localStorage.setItem("appStationCred", true)
                 } else {
-                    alert("There is already an account with that username.")
+                    alert("That email address is already registered.")
                 }
             })
 
