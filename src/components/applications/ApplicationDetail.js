@@ -24,7 +24,6 @@ class ApplicationDetail extends Component {
         status: '',
         link: '',
         jobDescription: '',
-        application: null,
         loadingStatus: false
     }
 
@@ -38,8 +37,7 @@ class ApplicationDetail extends Component {
                     companyName: app.company.name,
                     status: app.status.status,
                     link: app.link,
-                    jobDescription: app.description,
-                    application: app
+                    jobDescription: app.description
                 })
             })
     }
@@ -80,7 +78,7 @@ class ApplicationDetail extends Component {
                 <div className="buttons">
                     <EditApplicationForm
                         getApplication={this.getApplication}
-                        application={this.state.application}
+                        appId={this.appId}
                     />
                     <button
                         type="button"
