@@ -88,14 +88,22 @@ class ApplicationForm extends Component {
                 if (companies.length > 0) {
                     newApplication.company_id = companies[0].id
                     apiManager.post("jobs", newApplication)
-                    .then(r => this.close())
+                    .then(r => {
+                        // close modal, update state for ApplicationList
+                        this.close()
+                        this.props.getApplications()
+                    })
 
                 } else {
                     apiManager.post("companies", {"name": companyName})
                     .then(company => {
                         newApplication.company_id = company.id
                         apiManager.post("jobs", newApplication)
-                        .then(r => this.close())
+                        .then(r => {
+                            // close modal, update state for ApplicationList
+                            this.close()
+                            this.props.getApplications()
+                        })
                     })
                 }
             })

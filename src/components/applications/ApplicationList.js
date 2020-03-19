@@ -41,7 +41,8 @@ class ApplicationList extends Component {
         return (
             <React.Fragment>
                 <h1>My Applications</h1>
-                <ApplicationForm 
+                <ApplicationForm
+                    getApplications={this.getApplications}
                 />
                 <section className="application-list">
                     {this.state.applications.map(job =>
