@@ -83,7 +83,7 @@ class ApplicationForm extends Component {
                 application object. If not, create a new company, and get ID
                 for application object
             */
-            apiManager.get("companies", `name=${companyName.toLowerCase()}`)
+            apiManager.get("companies", `?name=${companyName.toLowerCase()}`)
             .then(companies => {
                 if (companies.length > 0) {
                     newApplication.company_id = companies[0].id
