@@ -60,6 +60,49 @@ class ApplicationForm extends Component {
         this.setState({ statusId: sId })
     }
 
+    // handle POST of new application
+    handleSubmit = e => {
+        e.preventDefault()
+        const { companyName, jobTitle, jobDescription, link, statusId } = this.state
+
+        // confirm required fields are filled out
+        if (companyName && jobTitle) {
+            this.setState({ loadingStatus: true })
+
+            // create a newApplication object with a placeholder for company_id
+            const newApplication = {
+                title: jobTitle,
+                description: jobDescription,
+                link: link,
+                company_id: null,
+                status_id: statusId
+            }
+
+            /* 
+                check to see if company exists in database. If so, get ID for 
+                application object. If not, create a new company, and get ID
+                for application object
+            */
+            apiManager.get("companies", `name=${companyName.toLowerCase()}`)
+            .then(companies => {
+                if (companies.length > 0) {
+                    newApplication.company_id = companies[0].id
+                    apiManager.post("jobs", newApplication)
+                    .then(r => this.close())
+
+                } else {
+                    apiManager.post("companies", {"name": companyName})
+                    .then(company => {
+                        newApplication.company_id = company.id
+                        apiManager.post("jobs", newApplication)
+                        .then(r => this.close())
+                    })
+                }
+            })
+
+        }
+    }
+
 
     componentDidMount() {
         apiManager.get("statuses")
@@ -67,7 +110,6 @@ class ApplicationForm extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <React.Fragment>
                 <Button
@@ -88,14 +130,16 @@ class ApplicationForm extends Component {
                             <Form.Control
                                 id="companyName"
                                 type="text"
-                                onChange={this.handleFieldChange} />
+                                onChange={this.handleFieldChange} 
+                                required/>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Job Title</Form.Label>
                             <Form.Control
                                 id="jobTitle"
                                 type="text"
-                                onChange={this.handleFieldChange} />
+                                onChange={this.handleFieldChange} 
+                                required/>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Description</Form.Label>
@@ -103,7 +147,8 @@ class ApplicationForm extends Component {
                                 id="jobDescription"
                                 as="textarea"
                                 rows="10"
-                                onChange={this.handleFieldChange} />
+                                onChange={this.handleFieldChange} 
+                                />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Link</Form.Label>
