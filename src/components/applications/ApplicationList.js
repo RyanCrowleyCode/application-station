@@ -14,6 +14,7 @@ import React, { Component } from 'react'
 
 // COMPONENTS
 import ApplicationCard from './ApplicationCard'
+import ApplicationForm from './ApplicationForm'
 
 // DATA
 import apiManager from '../../modules/apiManager'
@@ -40,6 +41,8 @@ class ApplicationList extends Component {
         return (
             <React.Fragment>
                 <h1>My Applications</h1>
+                <ApplicationForm 
+                />
                 <section className="application-list">
                     {this.state.applications.map(job =>
                         <ApplicationCard
