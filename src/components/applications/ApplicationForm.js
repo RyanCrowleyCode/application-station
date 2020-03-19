@@ -84,29 +84,29 @@ class ApplicationForm extends Component {
                 for application object
             */
             apiManager.get("companies", `?name=${companyName.toLowerCase()}`)
-            .then(companies => {
-                if (companies.length > 0) {
-                    newApplication.company_id = companies[0].id
-                    apiManager.post("jobs", newApplication)
-                    .then(r => {
-                        // close modal, update state for ApplicationList
-                        this.close()
-                        this.props.getApplications()
-                    })
-
-                } else {
-                    apiManager.post("companies", {"name": companyName})
-                    .then(company => {
-                        newApplication.company_id = company.id
+                .then(companies => {
+                    if (companies.length > 0) {
+                        newApplication.company_id = companies[0].id
                         apiManager.post("jobs", newApplication)
-                        .then(r => {
-                            // close modal, update state for ApplicationList
-                            this.close()
-                            this.props.getApplications()
-                        })
-                    })
-                }
-            })
+                            .then(r => {
+                                // close modal, update state for ApplicationList
+                                this.close()
+                                this.props.getApplications()
+                            })
+
+                    } else {
+                        apiManager.post("companies", { "name": companyName })
+                            .then(company => {
+                                newApplication.company_id = company.id
+                                apiManager.post("jobs", newApplication)
+                                    .then(r => {
+                                        // close modal, update state for ApplicationList
+                                        this.close()
+                                        this.props.getApplications()
+                                    })
+                            })
+                    }
+                })
 
         }
     }
@@ -126,7 +126,7 @@ class ApplicationForm extends Component {
                     onClick={() => this.setState({ open: true })}
                 >
                     New Application
-            </Button>
+                </Button>
                 <Modal
                     show={this.state.open}
                     onHide={() => this.close()}
@@ -138,16 +138,16 @@ class ApplicationForm extends Component {
                             <Form.Control
                                 id="companyName"
                                 type="text"
-                                onChange={this.handleFieldChange} 
-                                required/>
+                                onChange={this.handleFieldChange}
+                                required />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Job Title</Form.Label>
                             <Form.Control
                                 id="jobTitle"
                                 type="text"
-                                onChange={this.handleFieldChange} 
-                                required/>
+                                onChange={this.handleFieldChange}
+                                required />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Description</Form.Label>
@@ -155,8 +155,8 @@ class ApplicationForm extends Component {
                                 id="jobDescription"
                                 as="textarea"
                                 rows="10"
-                                onChange={this.handleFieldChange} 
-                                />
+                                onChange={this.handleFieldChange}
+                            />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Link</Form.Label>
@@ -176,7 +176,7 @@ class ApplicationForm extends Component {
                                     <option
                                         key={`status_${status.id}`}
                                         id={`${status.id}`}
-                                        >
+                                    >
                                         {status.status}
                                     </option>
                                 )}

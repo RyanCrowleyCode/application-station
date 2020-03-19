@@ -13,6 +13,7 @@ import React, { Component } from 'react'
 
 // DATA
 import apiManager from '../../modules/apiManager'
+import EditApplicationForm from './EditApplicationForm'
 
 class ApplicationDetail extends Component {
     appId = this.props.match.params.applicationId
@@ -23,6 +24,7 @@ class ApplicationDetail extends Component {
         status: '',
         link: '',
         jobDescription: '',
+        application: null,
         loadingStatus: false
     }
 
@@ -37,6 +39,7 @@ class ApplicationDetail extends Component {
                     status: app.status.status,
                     link: app.link,
                     jobDescription: app.description,
+                    application: app
                 })
             })
     }
@@ -75,6 +78,10 @@ class ApplicationDetail extends Component {
                 </div>
                 <p>{this.state.jobDescription}</p>
                 <div className="buttons">
+                    <EditApplicationForm
+                        getApplication={this.getApplication}
+                        application={this.state.application}
+                    />
                     <button
                         type="button"
                         className="btn btn-danger delete-list btn-sm"
