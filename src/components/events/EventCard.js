@@ -35,7 +35,6 @@ class EventCard extends Component {
     getJobUpdateState = () => {
         apiManager.get(`jobs/${this.state.jobId}`)
             .then(job => {
-                console.log(job)
                 this.setState({
                     jobTitle: job.title,
                     companyName: job.company.name

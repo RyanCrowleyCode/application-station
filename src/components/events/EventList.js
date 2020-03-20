@@ -12,6 +12,7 @@ import React, { Component } from 'react'
 
 // COMPONENTS
 import EventCard from './EventCard'
+import EventForm from './EventForm'
 
 // DATA
 import apiManager from '../../modules/apiManager'
@@ -24,9 +25,9 @@ class EventList extends Component {
     // gets events for user
     getEvents = () => {
         apiManager.get("events")
-        .then(events => {
-            this.setState({ events: events })
-        })
+            .then(events => {
+                this.setState({ events: events })
+            })
     }
 
     componentDidMount() {
@@ -34,17 +35,18 @@ class EventList extends Component {
     }
 
     render() {
-        return(
+        return (
             <React.Fragment>
                 <h1>My Events</h1>
-                <section className="event-list">
-                    {this.state.events.map(event =>
-                        <EventCard
-                            key={event.id}
-                            event={event}
-                        />
-                    )}
-                </section>
+                <EventForm />
+                    <section className="event-list">
+                        {this.state.events.map(event =>
+                            <EventCard
+                                key={event.id}
+                                event={event}
+                            />
+                        )}
+                    </section>
             </React.Fragment>
         )
     }
