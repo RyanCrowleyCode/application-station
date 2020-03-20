@@ -66,7 +66,7 @@ class ApplicationDetail extends Component {
         return (
             <React.Fragment>
                 <div className="application-header">
-                    <h1><span>{this.state.jobTitle}</span> <span>{this.state.companyName.toUpperCase()}</span></h1>
+                    <h2><span>{this.state.companyName.toUpperCase()}</span> <span>{this.state.jobTitle}</span></h2>
                 </div>
                 <div className="application-status">
                     <p>Status: {this.state.status}</p>
