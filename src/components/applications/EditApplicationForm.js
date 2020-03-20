@@ -10,7 +10,7 @@
 
 // REACT
 import React, { Component } from 'react'
-import { Form, Modal } from 'react-bootstrap'
+import { Form, Button, Modal } from 'react-bootstrap'
 
 // DATA
 import apiManager from '../../modules/apiManager'
@@ -69,7 +69,6 @@ class EditApplicationForm extends Component {
                     loadingStatus: false,
                     open: false
                 })
-                console.log(this.state)
             })
         // Get Statuses
         apiManager.get("statuses")
@@ -151,6 +150,20 @@ class EditApplicationForm extends Component {
                                 )}
                             </Form.Control>
                         </Form.Group>
+                        <div className="form-buttons">
+                            <Button
+                                variant="success"
+                                type="submit"
+                                onClick={this.handleSubmit}
+                                disabled={this.state.loadingStatus}>
+                                Update
+                            </Button>
+                            <Button
+                                onClick={() => this.getThenUpdateState()}
+                                variant="dark">
+                                Cancel
+                            </Button>
+                        </div>
                     </Form>
                 </Modal>
             </React.Fragment>
