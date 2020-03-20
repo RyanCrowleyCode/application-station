@@ -75,6 +75,58 @@ class EditApplicationForm extends Component {
             .then(statuses => this.setState({ statuses: statuses }))
     }
 
+    // handle PUT of updated application
+    handleUpdate = e => {
+        e.preventDefault()
+        const { companyName, jobTitle, jobDescription, link, statusId } = this.state
+
+        // confirm required fields are filled out
+        if (companyName && jobTitle) {
+            this.setState({ loadingStatus: true })
+
+            // create an updatedApplication object with a placeholder for company_id
+            const updatedApplication = {
+                title: jobTitle,
+                description: jobDescription,
+                link: link,
+                company_id: null,
+                status_id: statusId,
+                id: this.appId
+            }
+
+            /* 
+                check to see if company exists in database. If so, get ID for 
+                application object. If not, create a new company, and get ID
+                for application object
+            */
+            apiManager.get("companies", `?name=${companyName.toLowerCase()}`)
+                .then(companies => {
+                    if (companies.length > 0) {
+                        updatedApplication.company_id = companies[0].id
+                        apiManager.update("jobs", updatedApplication)
+                            .then(r => {
+                                // close modal, update state for ApplicationList
+                                this.getThenUpdateState()
+                                this.props.getApplication()
+                            })
+
+                    } else {
+                        apiManager.post("companies", { "name": companyName })
+                            .then(company => {
+                                updatedApplication.company_id = company.id
+                                apiManager.update("jobs", updatedApplication)
+                                    .then(r => {
+                                        // close modal, update state for ApplicationList
+                                        this.getThenUpdateState()
+                                        this.props.getApplication()
+                                    })
+                            })
+                    }
+                })
+
+        }
+    }
+
     componentDidMount() {
         this.getThenUpdateState()
     }
@@ -154,7 +206,7 @@ class EditApplicationForm extends Component {
                             <Button
                                 variant="success"
                                 type="submit"
-                                onClick={this.handleSubmit}
+                                onClick={this.handleUpdate}
                                 disabled={this.state.loadingStatus}>
                                 Update
                             </Button>
