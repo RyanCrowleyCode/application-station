@@ -11,6 +11,9 @@
 // REACT
 import React, { Component } from 'react'
 
+// COMPONENTS
+import EditEventForm from './EditEventForm'
+
 // DATA
 import apiManager from '../../modules/apiManager'
 
@@ -25,6 +28,7 @@ class EventCard extends Component {
         jobId: this.event.job_id,
         jobTitle: '',
         companyName: '',
+        loadingStatus: false
     }
 
     // get job, update state
@@ -36,7 +40,6 @@ class EventCard extends Component {
                     jobTitle: job.title,
                     companyName: job.company.name
                 })
-                console.log(this.state)
             })
     }
 
@@ -54,6 +57,19 @@ class EventCard extends Component {
                     </div>
                 </div>
                 <div className="event-right">
+                    <div className="buttons">
+                        <EditEventForm
+                            key={`event_${this.eventId}`}
+                        />
+                        <button
+                            type="button"
+                            className="btn btn-danger delete-list btn-sm"
+                            onClick={() => this.handleDeleteApp()}
+                            disabled={this.state.loadingStatus}
+                        >
+                            Delete
+                        </button>
+                    </div>
                     <p>Start: {this.state.startTime}</p>
                     <p>End: {this.state.endTime}</p>
                 </div>
