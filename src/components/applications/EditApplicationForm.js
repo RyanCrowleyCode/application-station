@@ -23,7 +23,8 @@ class EditApplicationForm extends Component {
         jobTitle: '',
         jobDescription: '',
         link: '',
-        statusId: 1,
+        statusId: null,
+        status: '',
         statuses: [],
         loadingStatus: false,
         open: false
@@ -33,6 +34,24 @@ class EditApplicationForm extends Component {
     // update values in state with corresponding form values
     handleFieldChange = (e) => {
         this.setState({ [e.target.id]: e.target.value })
+    }
+
+    // update statusId in state with corresponding form value
+    updateStatus = (e) => {
+        let sId, newStatus
+        // loop through statuses to see which status was selected
+        this.state.statuses.forEach(function (s) {
+            if (s.status === e.target.value) {
+                // if this right status is found, update sId to s.id
+                sId = s.id
+                newStatus = s.status
+            }
+        })
+        // update state
+        this.setState({ 
+            statusId: sId,
+            status: newStatus
+        })
     }
 
     // get Statuses and Job, update state
@@ -46,6 +65,7 @@ class EditApplicationForm extends Component {
                     jobDescription: app.description,
                     link: app.link,
                     statusId: parseInt(app.status.url[app.status.url.length - 1]),
+                    status: app.status.status,
                     loadingStatus: false,
                     open: false
                 })
@@ -85,6 +105,51 @@ class EditApplicationForm extends Component {
                                 value={this.state.companyName}
                                 onChange={this.handleFieldChange}
                                 required />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Job Title</Form.Label>
+                            <Form.Control
+                                id="jobTitle"
+                                type="text"
+                                value={this.state.jobTitle}
+                                onChange={this.handleFieldChange}
+                                required />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control
+                                id="jobDescription"
+                                as="textarea"
+                                value={this.state.jobDescription}
+                                rows="10"
+                                onChange={this.handleFieldChange}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Link</Form.Label>
+                            <Form.Control
+                                id="link"
+                                type="text"
+                                value={this.state.link}
+                                onChange={this.handleFieldChange} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Status</Form.Label>
+                            <Form.Control
+                                id="statusId"
+                                as="select"
+                                value={this.state.status}
+                                onChange={this.updateStatus}
+                            >
+                                {this.state.statuses.map(status =>
+                                    <option
+                                        key={`status_${status.id}`}
+                                        id={`${status.id}`}
+                                    >
+                                        {status.status}
+                                    </option>
+                                )}
+                            </Form.Control>
                         </Form.Group>
                     </Form>
                 </Modal>
