@@ -45,7 +45,7 @@ export default {
             },
             body: JSON.stringify(updatedObject)
         })
-            .then(response => response.json())
+            .then(result => result)
     },
 
     delete(endpoint, id) {
