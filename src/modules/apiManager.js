@@ -14,7 +14,7 @@ const baseUrl = 'http://localhost:8000'
 
 export default {
     get(endpoint, params = "") {
-        return fetch(`${baseUrl}/${endpoint}?${params}`, {
+        return fetch(`${baseUrl}/${endpoint}${params}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -50,11 +50,11 @@ export default {
 
     delete(endpoint, id) {
         return fetch(`${baseUrl}/${endpoint}/${id}`, {
-          method: 'DELETE',
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Token ${localStorage.getItem("appStationToken")}`
-        },
-        }).then((result) => result.json());
-      }
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${localStorage.getItem("appStationToken")}`
+            }
+        }).then((result) => result)
+    }
 }

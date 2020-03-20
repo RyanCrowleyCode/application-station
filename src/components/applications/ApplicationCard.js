@@ -11,6 +11,8 @@
 
 // REACT
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
 
 // DATA
 import apiManager from '../../modules/apiManager'
@@ -51,7 +53,7 @@ class ApplicationCard extends Component {
 
     componentDidMount() {
         // get events for this job
-        apiManager.get("events", `job_id=${this.job.id}`)
+        apiManager.get("events", `?job_id=${this.job.id}`)
             .then(events => {
                 // sort events into past and future
                 this.sortEvents(events)
@@ -86,6 +88,16 @@ class ApplicationCard extends Component {
                         </p>
                         : null
                     }
+                </div>
+                <div className="app-card-bottom">
+                    <Link to={`/applications/${this.job.id}`}>
+                        <button
+                            type="button"
+                            className="btn btn-success btn-sm"
+                        >
+                            Details
+                        </button>
+                    </Link>
                 </div>
 
             </React.Fragment>
