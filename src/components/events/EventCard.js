@@ -45,6 +45,19 @@ class EventCard extends Component {
             })
     }
 
+    // get own even, update state
+    getEventUpdateState = () => {
+        apiManager.get(`events/${this.eventId}`)
+            .then(event => {
+                this.setState({
+                    details: event.details,
+                    startTime: event.start_time,
+                    endTime: event.end_time,
+                    jobId: event.job_id,
+                })
+            })
+    }
+
     // handle delete
     handleDeleteEvent = () => {
         this.setState({ loadingStatus: true })
@@ -77,8 +90,10 @@ class EventCard extends Component {
                 <div className="event-right">
                     <div className="buttons">
                         <EditEventForm
+                            jobs={this.props.jobs}
                             key={`event_${this.eventId}`}
                             getJobUpdateState={this.getJobUpdateState}
+                            getEventUpdateState={this.getEventUpdateState}
                             eventId={this.eventId}
                         />
                         <button

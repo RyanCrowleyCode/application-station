@@ -26,7 +26,7 @@ class EditEventForm extends Component {
         startTime: '',
         endTime: '',
         jobId: null,
-        applications: [],
+        applications: this.props.jobs,
         newApp: '',
         open: false,
         loadingStatus: false
@@ -56,7 +56,7 @@ class EditEventForm extends Component {
         })
     }
 
-    // get jobs, update state
+    // get event, update state
     getThenUpdateState = () => {
         // Get event
         apiManager.get(`events/${this.eventId}`)
@@ -75,9 +75,43 @@ class EditEventForm extends Component {
                         this.setState({ newApp: `${job.title} at ${job.company.name.toUpperCase()}` })
                     })
             })
-        // Get jobs
-        apiManager.get("jobs")
-            .then(jobs => this.setState({ applications: jobs }))
+    }
+
+    // handle PUT of updated event
+    handleUpdate = e => {
+        e.preventDefault()
+        const { details, startTime, endTime, jobId } = this.state
+
+        // confirm fields are complete out
+        if (details && startTime && endTime && jobId) {
+            // confirm the start time is not later than the end time
+            if (startTime <= endTime) {
+                this.setState({ loadingStatus: true })
+
+                // create an updatedEvent object
+                const updatedEvent = {
+                    details: details,
+                    start_time: startTime,
+                    end_time: endTime,
+                    job_id: jobId,
+                    id: this.eventId
+                }
+
+                // Post to the database
+                apiManager.update("events", updatedEvent)
+                    .then(r => {
+                        // close modal, update state for EventCard
+                        this.getThenUpdateState()
+                        this.props.getJobUpdateState()
+                        this.props.getEventUpdateState()
+                    })
+
+            } else {
+                window.alert("This event cannot end before it begins")
+            }
+        } else {
+            window.alert("Please complete all fields")
+        }
     }
 
     componentDidMount() {
@@ -154,7 +188,7 @@ class EditEventForm extends Component {
                             <Button
                                 variant="success"
                                 type="submit"
-                                onClick={this.handleSubmit}
+                                onClick={this.handleUpdate}
                                 disabled={this.state.loadingStatus}
                             >
                                 Submit

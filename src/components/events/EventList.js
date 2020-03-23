@@ -19,7 +19,8 @@ import apiManager from '../../modules/apiManager'
 
 class EventList extends Component {
     state = {
-        events: []
+        events: [],
+        jobs: []
     }
 
     // gets events for user
@@ -31,7 +32,11 @@ class EventList extends Component {
     }
 
     componentDidMount() {
-        this.getEvents()
+        apiManager.get("jobs")
+        .then(jobs => {
+            this.setState({ jobs: jobs})
+            this.getEvents()
+        })
     }
 
     render() {
@@ -44,6 +49,7 @@ class EventList extends Component {
                 <section className="event-list">
                     {this.state.events.map(event =>
                         <EventCard
+                            jobs={this.state.jobs}
                             key={event.id}
                             event={event}
                             getEvents={this.getEvents}
