@@ -17,8 +17,31 @@ import apiManager from '../../modules/apiManager'
 
 
 class EventForm extends Component {
+    // We are going to need to have a dropdown menu with jobs to choose from
     state = {
+        details: '',
+        startTime: '',
+        endTime: '',
+        jobId: null,
+        open: false,
+        loadingStatus: false
+    }
 
+    // close modal and reset state
+    close() {
+        this.setState({
+            details: '',
+            startTime: '',
+            endTime: '',
+            jobId: null,
+            open: false,
+            loadingStatus: false
+        })
+    }
+
+    // update values in state with corresponding form values
+    handleFieldChange = (e) => {
+        this.setState({ [e.target.id]: e.target.value })
     }
 
 
@@ -32,11 +55,13 @@ class EventForm extends Component {
                 <Button
                     variant="success"
                     className="new-event-button"
+                    onClick={() => this.setState({ open: true })}
                 >
                     New Event
                 </Button>
                 <Modal
-
+                    show={this.state.open}
+                    onHide={() => this.close()}
                 >
                     <Form >
                         <h1>New Event</h1>
@@ -45,10 +70,11 @@ class EventForm extends Component {
                             <Button
                                 variant="success"
                                 type="submit"
-                                Submit
                             >
+                                Submit
                             </Button>
                             <Button
+                                onClick={() => this.close()}
                                 variant="dark">
                                 Cancel
                             </Button>

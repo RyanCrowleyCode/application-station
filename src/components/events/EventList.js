@@ -39,14 +39,14 @@ class EventList extends Component {
             <React.Fragment>
                 <h1>My Events</h1>
                 <EventForm />
-                    <section className="event-list">
-                        {this.state.events.map(event =>
-                            <EventCard
-                                key={event.id}
-                                event={event}
-                            />
-                        )}
-                    </section>
+                <section className="event-list">
+                    {this.state.events.map(event =>
+                        <EventCard
+                            key={event.id}
+                            event={event}
+                        />
+                    )}
+                </section>
             </React.Fragment>
         )
     }
