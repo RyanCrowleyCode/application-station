@@ -45,6 +45,22 @@ class EventCard extends Component {
             })
     }
 
+    // handle delete
+    handleDeleteEvent = () => {
+        this.setState({ loadingStatus: true })
+        let confirmation = window.confirm(
+            "Are you sure you want to delete this event?"
+        )
+        if (confirmation) {
+            apiManager.delete("events", this.eventId)
+                .then(() => {
+                    this.props.getEvents()
+                })
+        } else {
+            this.setState({ loadingStatus: false })
+        }
+    }
+
     componentDidMount() {
         this.getJobUpdateState()
     }
@@ -66,7 +82,7 @@ class EventCard extends Component {
                         <button
                             type="button"
                             className="btn btn-danger delete-list btn-sm"
-                            onClick={() => this.handleDeleteApp()}
+                            onClick={() => this.handleDeleteEvent()}
                             disabled={this.state.loadingStatus}
                         >
                             Delete

@@ -46,6 +46,7 @@ class EventList extends Component {
                         <EventCard
                             key={event.id}
                             event={event}
+                            getEvents={this.getEvents}
                         />
                     )}
                 </section>
