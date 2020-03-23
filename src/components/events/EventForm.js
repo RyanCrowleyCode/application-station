@@ -60,6 +60,41 @@ class EventForm extends Component {
         this.setState({ jobId: aId })
     }
 
+    // handle POST of new event
+    handleSubmit = e => {
+        e.preventDefault()
+        const { details, startTime, endTime, jobId } = this.state
+
+        // confirm fields are complete out
+        if (details && startTime && endTime && jobId) {
+            // confirm the start time is not later than the end time
+            if (startTime <= endTime) {
+                this.setState({ loadingStatus: true })
+
+                // create a newEvent object
+                const newEvent = {
+                    details: details,
+                    start_time: startTime,
+                    end_time: endTime,
+                    job_id: jobId
+                }
+
+                // Post to the database
+                apiManager.post("events", newEvent)
+                .then(r => {
+                    // close modal, update state for EventList
+                    this.close()
+                    this.props.getEvents()
+                })
+
+            } else {
+                window.alert("This event cannot end before it begins")
+            }
+        } else {
+            window.alert("Please complete all fields")
+        }
+    }
+
 
     componentDidMount() {
         apiManager.get("jobs")
@@ -114,6 +149,7 @@ class EventForm extends Component {
                                 onChange={this.updateJob}
                                 required
                             >
+                                <option>...</option>
                                 {this.state.applications.map(application =>
                                     <option
                                         key={`application_${application.id}`}
@@ -130,6 +166,8 @@ class EventForm extends Component {
                             <Button
                                 variant="success"
                                 type="submit"
+                                onClick={this.handleSubmit}
+                                disabled={this.state.loadingStatus}
                             >
                                 Submit
                             </Button>

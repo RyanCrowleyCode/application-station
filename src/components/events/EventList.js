@@ -38,7 +38,9 @@ class EventList extends Component {
         return (
             <React.Fragment>
                 <h1>My Events</h1>
-                <EventForm />
+                <EventForm 
+                    getEvents={this.getEvents}
+                />
                 <section className="event-list">
                     {this.state.events.map(event =>
                         <EventCard
