@@ -15,12 +15,15 @@ import { Form, Button, Modal } from 'react-bootstrap'
 // DATA
 import apiManager from '../../modules/apiManager'
 
+// MODULES
+import toDTL from '../../modules/helper'
+
 class EditEventForm extends Component {
     eventId = this.props.eventId
 
     state = {
         details: '',
-        startTime: null,
+        startTime: '',
         endTime: '',
         jobId: null,
         applications: [],
@@ -47,10 +50,10 @@ class EditEventForm extends Component {
             }
         })
         // update state
-        this.setState({ 
+        this.setState({
             jobId: aId,
             newApp: app
-         })
+        })
     }
 
     // get jobs, update state
@@ -60,17 +63,17 @@ class EditEventForm extends Component {
             .then(event => {
                 this.setState({
                     details: event.details,
-                    startTime: event.start_time,
-                    endTime: event.end_time,
+                    startTime: toDTL(event.start_time),
+                    endTime: toDTL(event.end_time),
                     jobId: event.job_id,
                     loadingStatus: false,
                     open: false
                 })
-            }) .then(() => {
+            }).then(() => {
                 apiManager.get(`jobs/${this.state.jobId}`)
-                .then(job => {
-                    this.setState({ newApp: `${job.title} at ${job.company.name.toUpperCase()}`})
-                })
+                    .then(job => {
+                        this.setState({ newApp: `${job.title} at ${job.company.name.toUpperCase()}` })
+                    })
             })
         // Get jobs
         apiManager.get("jobs")
@@ -82,7 +85,6 @@ class EditEventForm extends Component {
     }
 
     render() {
-        console.log(this.state.newApp)
         return (
             <React.Fragment>
                 <button
