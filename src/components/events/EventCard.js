@@ -17,6 +17,9 @@ import EditEventForm from './EditEventForm'
 // DATA
 import apiManager from '../../modules/apiManager'
 
+// STYLES
+import './EventCard.css'
+
 class EventCard extends Component {
     event = this.props.event
     eventId = this.props.event.id
@@ -48,7 +51,7 @@ class EventCard extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <div className="event-card">
                 <div className="event-left">
                     <div className="event-job">
                         <h5><span>{this.state.companyName.toUpperCase()}</span> <span>{this.state.jobTitle}</span></h5>
@@ -72,7 +75,7 @@ class EventCard extends Component {
                     <p>Start: {this.state.startTime}</p>
                     <p>End: {this.state.endTime}</p>
                 </div>
-            </React.Fragment>
+            </div>
         )
     }
 }
