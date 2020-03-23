@@ -17,7 +17,6 @@ import apiManager from '../../modules/apiManager'
 
 
 class EventForm extends Component {
-    // We are going to need to have a dropdown menu with jobs to choose from
     state = {
         details: '',
         startTime: '',
@@ -102,6 +101,7 @@ class EventForm extends Component {
     }
 
     render() {
+        console.log(this.state.startTime)
         return (
             <React.Fragment>
                 <Button
