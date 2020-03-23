@@ -49,9 +49,10 @@ class EventForm extends Component {
     updateJob = (e) => {
         let aId
         // loop through applications to see which job was selected
-        this.state.appilcations.forEach(function (a) {
-            if (a.status === e.target.value) {
-                // if this right status is found, update jId to s.id
+        this.state.applications.forEach(function (a) {
+            if (e.target.value.includes(a.title)
+                && e.target.value.toLowerCase().includes(a.company.name)) {
+                // if this is the right job is found, update jId to a.id
                 aId = a.id
             }
         })
@@ -66,7 +67,6 @@ class EventForm extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <React.Fragment>
                 <Button
@@ -120,6 +120,7 @@ class EventForm extends Component {
                                         id={`${application.id}`}
                                     >
                                         {application.title} at {application.company.name.toUpperCase()}
+
                                     </option>
                                 )}
                             </Form.Control>
