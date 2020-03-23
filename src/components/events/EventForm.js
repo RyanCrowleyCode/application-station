@@ -23,6 +23,7 @@ class EventForm extends Component {
         startTime: '',
         endTime: '',
         jobId: null,
+        applications: [],
         open: false,
         loadingStatus: false
     }
@@ -44,12 +45,28 @@ class EventForm extends Component {
         this.setState({ [e.target.id]: e.target.value })
     }
 
+    // update jobId in state with corresponding form value
+    updateJob = (e) => {
+        let aId
+        // loop through applications to see which job was selected
+        this.state.appilcations.forEach(function (a) {
+            if (a.status === e.target.value) {
+                // if this right status is found, update jId to s.id
+                aId = a.id
+            }
+        })
+        // update state
+        this.setState({ jobId: aId })
+    }
+
 
     componentDidMount() {
-
+        apiManager.get("jobs")
+            .then(jobs => this.setState({ applications: jobs }))
     }
 
     render() {
+        console.log(this.state)
         return (
             <React.Fragment>
                 <Button
@@ -65,6 +82,48 @@ class EventForm extends Component {
                 >
                     <Form >
                         <h1>New Event</h1>
+                        <Form.Group>
+                            <Form.Label>Details</Form.Label>
+                            <Form.Control
+                                id="details"
+                                type="text"
+                                onChange={this.handleFieldChange}
+                                required />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Start</Form.Label>
+                            <Form.Control
+                                id="startTime"
+                                type="datetime-local"
+                                onChange={this.handleFieldChange}
+                                required />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>End</Form.Label>
+                            <Form.Control
+                                id="endTime"
+                                type="datetime-local"
+                                onChange={this.handleFieldChange}
+                                required />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Application</Form.Label>
+                            <Form.Control
+                                id="jobId"
+                                as="select"
+                                onChange={this.updateJob}
+                                required
+                            >
+                                {this.state.applications.map(application =>
+                                    <option
+                                        key={`application_${application.id}`}
+                                        id={`${application.id}`}
+                                    >
+                                        {application.title} at {application.company.name.toUpperCase()}
+                                    </option>
+                                )}
+                            </Form.Control>
+                        </Form.Group>
 
                         <div className="form-buttons">
                             <Button
