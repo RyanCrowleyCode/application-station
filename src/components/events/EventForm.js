@@ -17,7 +17,6 @@ import apiManager from '../../modules/apiManager'
 
 
 class EventForm extends Component {
-    // We are going to need to have a dropdown menu with jobs to choose from
     state = {
         details: '',
         startTime: '',

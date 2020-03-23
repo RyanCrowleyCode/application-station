@@ -78,6 +78,8 @@ class EventCard extends Component {
                     <div className="buttons">
                         <EditEventForm
                             key={`event_${this.eventId}`}
+                            getJobUpdateState={this.getJobUpdateState}
+                            eventId={this.eventId}
                         />
                         <button
                             type="button"
