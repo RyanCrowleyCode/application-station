@@ -13,6 +13,8 @@ import React, { Component } from 'react'
 
 // DATA
 import apiManager from '../../modules/apiManager'
+
+// COMPONENTS
 import EditApplicationForm from './EditApplicationForm'
 
 // STYLES
