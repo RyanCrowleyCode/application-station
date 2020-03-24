@@ -3,6 +3,8 @@
     display: flex;
     justify-content: space-between;
     width: 80%;
+    margin: 10px;
+    
 }
 
 .event-card .buttons {

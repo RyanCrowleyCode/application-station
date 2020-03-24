@@ -13,17 +13,20 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+// STYLES
+import './QuestionCard.css'
+
 class QuestionCard extends Component {
     question = this.props.question
 
     render() {
         return (
-            <React.Fragment>
+            <div className="question-card">
                 <div className="question-card-top">
                     from {this.question.is_from_interviewer ? 'Interviewer' : 'Me'}
                 </div>
                 <p className="question-card-question">
-                    {this.question.question}
+                    "{this.question.question}"
                 </p>
                 <div className="question-card-bottom">
                     <Link to={`/questions/${this.question.id}`}>
@@ -35,7 +38,7 @@ class QuestionCard extends Component {
                         </button>
                     </Link>
                 </div>
-            </React.Fragment>
+            </div>
         )
     }
 }
