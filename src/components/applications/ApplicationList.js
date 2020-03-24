@@ -16,6 +16,9 @@ import React, { Component } from 'react'
 import ApplicationCard from './ApplicationCard'
 import ApplicationForm from './ApplicationForm'
 
+// STYLES
+import './ApplicationList.css'
+
 // DATA
 import apiManager from '../../modules/apiManager'
 

@@ -2,7 +2,9 @@
     border: 1px solid black;
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    min-width: 300px;
+    max-width: 900px;
+    margin: 10px; 
 }
 
 .event-card .buttons {

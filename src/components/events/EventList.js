@@ -14,6 +14,9 @@ import React, { Component } from 'react'
 import EventCard from './EventCard'
 import EventForm from './EventForm'
 
+// STYLES
+import './EventList.css'
+
 // DATA
 import apiManager from '../../modules/apiManager'
 

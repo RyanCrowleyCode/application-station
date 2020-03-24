@@ -16,6 +16,9 @@ import apiManager from '../../modules/apiManager'
 import QuestionCard from './QuestionCard'
 import QuestionForm from './QuestionForm'
 
+// STYLES
+import './QuestionList.css'
+
 class QuestionList extends Component {
     state = {
         questions: []
@@ -40,7 +43,7 @@ class QuestionList extends Component {
                 <QuestionForm
                     getQuestions={this.getQuestions}
                 />
-                <section className="application-list">
+                <section className="question-list">
                     {this.state.questions.map(question =>
                         <QuestionCard
                             key={question.id}

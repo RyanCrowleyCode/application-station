@@ -1,0 +1,26 @@
+.question-card {
+    border: 1px solid black;
+    margin: 25px 10px;
+    width: 30%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.question-card-top {
+    border-bottom: 1px solid black;
+    font-style: italic;
+    font-weight: bold;
+    padding: 3px;
+}
+
+.question-card-question {
+    padding: 75px 10px;
+    margin-bottom: 0px;
+}
+
+.question-card-bottom button {
+    width: 100%;
+}
+
