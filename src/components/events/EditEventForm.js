@@ -134,7 +134,7 @@ class EditEventForm extends Component {
                     onHide={() => this.getThenUpdateState()}
                 >
                     <Form >
-                        <h1>Edit Event</h1>
+                        <h2>Edit Event</h2>
                         <Form.Group>
                             <Form.Label>Details</Form.Label>
                             <Form.Control

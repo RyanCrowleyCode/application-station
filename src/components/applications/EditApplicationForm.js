@@ -147,7 +147,7 @@ class EditApplicationForm extends Component {
                     onHide={() => this.getThenUpdateState()}
                 >
                     <Form >
-                        <h1>Edit Application</h1>
+                        <h2>Edit Application</h2>
                         <Form.Group>
                             <Form.Label>Company</Form.Label>
                             <Form.Control

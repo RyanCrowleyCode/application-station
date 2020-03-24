@@ -116,7 +116,7 @@ class EventForm extends Component {
                     onHide={() => this.close()}
                 >
                     <Form >
-                        <h1>New Event</h1>
+                        <h2>New Event</h2>
                         <Form.Group>
                             <Form.Label>Details</Form.Label>
                             <Form.Control

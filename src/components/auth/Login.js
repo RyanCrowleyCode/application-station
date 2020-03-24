@@ -51,7 +51,7 @@ class Login extends Component {
             <React.Fragment>
                 <div className="jumbotron text-center welcome-view">
                     <header className="welcome-header">
-                        <h1 className="font-weight-light text-center">Application Station</h1>
+                        <h2 className="font-weight-light text-center">Application Station</h2>
                     </header>
                     <form
                         id="login-form"

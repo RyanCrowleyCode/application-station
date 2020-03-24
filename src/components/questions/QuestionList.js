@@ -9,10 +9,46 @@
 // REACT
 import React, { Component } from 'react'
 
+// DATA
+import apiManager from '../../modules/apiManager'
+
+// COMPONENTS
+import QuestionCard from './QuestionCard'
+import QuestionForm from './QuestionForm'
+
 class QuestionList extends Component {
+    state = {
+        questions: []
+    }
+
+    // gets questions for user
+    getQuestions = () => {
+        apiManager.get("questions")
+            .then(questions => {
+                this.setState({ questions: questions })
+            })
+    }
+
+    componentDidMount() {
+        this.getQuestions()
+    }
+
     render() {
-        return(
-            <h1>Question List</h1>
+        return (
+            <React.Fragment>
+                <h2>Questions</h2>
+                <QuestionForm
+                    getQuestions={this.getQuestions}
+                />
+                <section className="application-list">
+                    {this.state.questions.map(question =>
+                        <QuestionCard
+                            key={question.id}
+                            question={question}
+                        />
+                    )}
+                </section>
+            </React.Fragment>
         )
     }
 }
