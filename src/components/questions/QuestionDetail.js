@@ -96,7 +96,7 @@ class QuestionDetail extends Component {
                     <EditResponseForm
                         key={'response'}
                         getQuestion={this.getQuestion}
-                        responseId={this.questionId}
+                        questionId={this.questionId}
                     />
                 </div>
             </div>

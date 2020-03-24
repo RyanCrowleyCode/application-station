@@ -48,6 +48,18 @@ export default {
             .then(result => result)
     },
 
+    updateResponse(updatedObject) {
+        return fetch(`${baseUrl}/questions/${updatedObject.id}?answer=true`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${localStorage.getItem("appStationToken")}`
+            },
+            body: JSON.stringify(updatedObject)
+        })
+            .then(result => result)
+    },
+
     delete(endpoint, id) {
         return fetch(`${baseUrl}/${endpoint}/${id}`, {
             method: 'DELETE',

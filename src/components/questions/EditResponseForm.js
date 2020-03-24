@@ -17,9 +17,11 @@ import { Form, Button, Modal } from 'react-bootstrap'
 import apiManager from '../../modules/apiManager'
 
 class EditResponseForm extends Component {
-    responseId = this.props.responseId
+    questionId = this.props.questionId
 
     state = {
+        question: '',
+        isFromInterviewer: false,
         response: '',
         loadingStatus: false,
         open: false
@@ -32,29 +34,52 @@ class EditResponseForm extends Component {
 
     // get Statuses and Job, update state
     getThenUpdateState = () => {
-        apiManager.get(`questions/${this.responseId}`)
+        apiManager.get(`questions/${this.questionId}`)
             .then(question => {
-                {
-                question.response != undefined ?
+                question.answer !== undefined ?
                     this.setState({
-                        response: question.response,
+                        question: question.question,
+                        isFromInterviewer: question.is_from_interviewer,
+                        response: question.answer,
                         loadingStatus: false,
                         open: false
                     })
                     : this.setState({
+                        question: question.question,
+                        isFromInterviewer: question.is_from_interviewer,
                         loadingStatus: false,
                         open: false
                     })
-                }
             })
     }
+
+    // handle PUT of updated response
+    handleUpdate = e => {
+        e.preventDefault()
+        const { question, isFromInterviewer, response } = this.state
+
+        // create updatedQuestion object
+        const updatedQuestion = {
+            question: question,
+            is_from_interviewer: isFromInterviewer,
+            answer: response,
+            id: this.questionId
+        }
+
+        // update database
+        apiManager.updateResponse(updatedQuestion)
+            .then(r => {
+                this.getThenUpdateState()
+                this.props.getQuestion()
+            })
+    }
+
 
     componentDidMount() {
         this.getThenUpdateState()
     }
 
     render() {
-        console.log(this.state)
         return (
             <React.Fragment>
                 <button
@@ -80,6 +105,20 @@ class EditResponseForm extends Component {
                                 onChange={this.handleFieldChange}
                                 required />
                         </Form.Group>
+                        <div className="form-buttons">
+                            <Button
+                                variant="success"
+                                type="submit"
+                                onClick={this.handleUpdate}
+                                disabled={this.state.loadingStatus}>
+                                Update
+                            </Button>
+                            <Button
+                                onClick={() => this.getThenUpdateState()}
+                                variant="dark">
+                                Cancel
+                            </Button>
+                        </div>
                     </Form>
                 </Modal>
             </React.Fragment>
