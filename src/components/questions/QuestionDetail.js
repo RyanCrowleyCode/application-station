@@ -14,6 +14,9 @@ import React, { Component } from 'react'
 // DATA
 import apiManager from '../../modules/apiManager'
 
+// COMPONENTS
+import EditResponseForm from './EditResponseForm'
+
 
 class QuestionDetail extends Component {
     questionId = this.props.match.params.questionId
@@ -72,6 +75,7 @@ class QuestionDetail extends Component {
                 </div>
                 <div className="buttons">
                     {/* <EditQuestionForm
+                        key={'question'}
                         getQuestion={this.getQuestion}
                         questionId={this.questionId}
                     /> */}
@@ -83,6 +87,17 @@ class QuestionDetail extends Component {
                     >
                         Delete
                         </button>
+                </div>
+                <div className="question-detail-bottom">
+                    <h6>Response</h6>
+                    <p className="question-detail-response">
+                        {this.state.response}
+                    </p>
+                    <EditResponseForm
+                        key={'response'}
+                        getQuestion={this.getQuestion}
+                        responseId={this.questionId}
+                    />
                 </div>
             </div>
         )
