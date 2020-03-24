@@ -62,6 +62,7 @@ export default {
                     // place token in local storage and log in the user
                     localStorage.setItem("appStationToken", response.token)
                     localStorage.setItem("appStationCred", true)
+                    return(response)
                 } else {
                     alert("That email address is already registered.")
                 }
