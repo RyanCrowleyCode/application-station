@@ -23,7 +23,9 @@
     margin-bottom: 0px;
 }
 
-
+.app-card-events p {
+    color: black;
+}
 
 .app-card-bottom button {
     width: 100%;

@@ -78,20 +78,25 @@ class ApplicationCard extends Component {
                     <p><a href={this.job.link} target="_blank" rel="noopener noreferrer">View External Job Description</a></p>
 
                     <div className="app-card-events">
-                        {previousEvent ?
-                            <p>
-                                <strong>Previous Event:</strong> ({previousEvent.start_time})
+                        <Link to={'/events'}>
+                            {previousEvent ?
+                                <p>
+                                    <strong>Previous Event:</strong> ({previousEvent.start_time})
                             {previousEvent.details}
-                            </p>
-                            : null
-                        }
-                        {nextEvent ?
-                            <p>
-                                <strong>Next Event:</strong> ({nextEvent.start_time})
+                                </p>
+                                : null
+                            }
+                        </Link>
+                        <Link to={'/events'}>
+                            {nextEvent ?
+                                <p>
+                                    <strong>Next Event:</strong> ({nextEvent.start_time})
                             {nextEvent.details}
-                            </p>
-                            : null
-                        }
+                                </p>
+                                : null
+                            }
+                        </Link>
+
                     </div>
                 </div>
                 <div className="app-card-bottom">
@@ -105,7 +110,7 @@ class ApplicationCard extends Component {
                     </Link>
                 </div>
 
-            </div>
+            </div >
         )
     }
 
