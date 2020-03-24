@@ -47,6 +47,31 @@ class QuestionForm extends Component {
         }
     }
 
+    // handle POST of new question
+    handleSubmit = e => {
+        e.preventDefault()
+        const { question, isFromInterviewer } = this.state
+        
+        // confirm required fields are filled out
+        if (question) {
+            this.setState({ loadingStatus: true})
+
+            // create a newQuestion object
+            const newQuestion = {
+                question: question,
+                is_from_interviewer: isFromInterviewer
+            }
+
+            // POST newQuestion
+            apiManager.post("questions", newQuestion)
+            .then(r => {
+                // close modal, update state for QuestionsList
+                this.close()
+                this.props.getQuestions()
+            })
+        }
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -70,29 +95,43 @@ class QuestionForm extends Component {
                                 onChange={this.handleFieldChange}
                                 required />
                         </Form.Group>
-                    </Form>
-                    <Form.Group>
-                        <Form.Label>Who is asking?</Form.Label>
-                        <Form.Control
-                            id="isFromInterviewer"
-                            as="select"
-                            onChange={this.handleQuestioner}
-                        >
-                            <option
-                                key={`asker_me`}
-                                id={'me'}
+                        <Form.Group>
+                            <Form.Label>Who is asking?</Form.Label>
+                            <Form.Control
+                                id="isFromInterviewer"
+                                as="select"
+                                onChange={this.handleQuestioner}
                             >
-                                Me
+                                <option
+                                    key={`asker_me`}
+                                    id={'me'}
+                                >
+                                    Me
                             </option>
-                            <option
-                                key={`asker_interviewer`}
-                                id={'interviewer'}
-                            >
-                                Interviewer
+                                <option
+                                    key={`asker_interviewer`}
+                                    id={'interviewer'}
+                                >
+                                    Interviewer
                             </option>
 
-                        </Form.Control>
-                    </Form.Group>
+                            </Form.Control>
+                        </Form.Group>
+                        <div className="form-buttons">
+                            <Button
+                                variant="success"
+                                type="submit"
+                                onClick={this.handleSubmit}
+                                disabled={this.state.loadingStatus}>
+                                Submit
+                            </Button>
+                            <Button
+                                onClick={() => this.close()}
+                                variant="dark">
+                                Cancel
+                            </Button>
+                        </div>
+                    </Form>
                 </Modal>
             </React.Fragment>
         )
