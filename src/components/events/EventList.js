@@ -42,7 +42,7 @@ class EventList extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>My Events</h1>
+                <h2>My Events</h2>
                 <EventForm 
                     getEvents={this.getEvents}
                 />

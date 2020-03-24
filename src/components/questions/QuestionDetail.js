@@ -12,7 +12,7 @@ import React, { Component } from 'react'
 class QuestionDetail extends Component {
     render() {
         return(
-            <h1>Question DETAIL</h1>
+            <h2>Question DETAIL</h2>
         )
     }
 }

@@ -132,7 +132,7 @@ class ApplicationForm extends Component {
                     onHide={() => this.close()}
                 >
                     <Form >
-                        <h1>New Application</h1>
+                        <h2>New Application</h2>
                         <Form.Group>
                             <Form.Label>Company</Form.Label>
                             <Form.Control
