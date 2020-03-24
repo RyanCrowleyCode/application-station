@@ -40,7 +40,7 @@ class ApplicationList extends Component {
     render() {
         return (
             <React.Fragment>
-                <h2>My Applications</h2>
+                <h2>Applications</h2>
                 <ApplicationForm
                     getApplications={this.getApplications}
                 />

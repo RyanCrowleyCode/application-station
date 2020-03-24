@@ -14,6 +14,7 @@ import apiManager from '../../modules/apiManager'
 
 // COMPONENTS
 import QuestionCard from './QuestionCard'
+import QuestionForm from './QuestionForm'
 
 class QuestionList extends Component {
     state = {
@@ -35,7 +36,10 @@ class QuestionList extends Component {
     render() {
         return (
             <React.Fragment>
-                <h2>Question List</h2>
+                <h2>Questions</h2>
+                <QuestionForm
+                    getQuestions={this.getQuestions}
+                />
                 <section className="application-list">
                     {this.state.questions.map(question =>
                         <QuestionCard

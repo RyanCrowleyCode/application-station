@@ -26,7 +26,7 @@ class QuestionCard extends Component {
                     {this.question.question}
                 </p>
                 <div className="question-card-bottom">
-                    <Link to={`/applications/${this.question.id}`}>
+                    <Link to={`/questions/${this.question.id}`}>
                         <button
                             type="button"
                             className="btn btn-success btn-sm"
