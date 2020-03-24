@@ -37,6 +37,22 @@ class QuestionDetail extends Component {
             })
     }
 
+    // handle delete
+    handleDeleteQuestion = () => {
+        this.setState({ loadingStatus: true })
+        let confirmation = window.confirm(
+            "Are you sure you want to delete this question?"
+        )
+        if (confirmation) {
+            apiManager.delete("questions", this.questionId)
+                .then(() => {
+                    this.props.history.push("/questions")
+                })
+        } else {
+            this.setState({ loadingStatus: false })
+        }
+    }
+
     componentDidMount() {
         this.getQuestion()
     }
@@ -53,6 +69,20 @@ class QuestionDetail extends Component {
                             ? "Interviewer to Me"
                             : "Me to the Interviewer"}
                     </p>
+                </div>
+                <div className="buttons">
+                    {/* <EditQuestionForm
+                        getQuestion={this.getQuestion}
+                        questionId={this.questionId}
+                    /> */}
+                    <button
+                        type="button"
+                        className="btn btn-danger delete-list btn-sm"
+                        onClick={() => this.handleDeleteQuestion()}
+                        disabled={this.state.loadingStatus}
+                    >
+                        Delete
+                        </button>
                 </div>
             </div>
         )
