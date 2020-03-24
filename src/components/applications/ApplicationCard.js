@@ -17,6 +17,9 @@ import { Link } from 'react-router-dom'
 // DATA
 import apiManager from '../../modules/apiManager'
 
+// STYLES
+import './ApplicationCard.css'
+
 
 
 class ApplicationCard extends Component {
@@ -66,28 +69,30 @@ class ApplicationCard extends Component {
     render() {
         const { previousEvent, nextEvent } = this.state
         return (
-            <React.Fragment>
+            <div className="app-card">
                 <div className="app-card-top">
                     <h5><span>{(this.job.company.name).toUpperCase()}</span> | <span>{this.job.title}</span></h5>
                 </div>
                 <div className="app-card-middle">
-                    <p>Status: {this.job.status.status}</p>
-                    <p>Link: <a href={this.job.link} target="_blank" rel="noopener noreferrer">{this.job.link}</a></p>
+                    <p><strong>Status:</strong> {this.job.status.status}</p>
+                    <p><a href={this.job.link} target="_blank" rel="noopener noreferrer">View External Job Description</a></p>
 
-                    {previousEvent ?
-                        <p>
-                            Previous Event: ({previousEvent.start_time})
-                            <br />{previousEvent.details}
-                        </p>
-                        : null
-                    }
-                    {nextEvent ?
-                        <p>
-                            Next Event: ({nextEvent.start_time})
-                            <br />{nextEvent.details}
-                        </p>
-                        : null
-                    }
+                    <div className="app-card-events">
+                        {previousEvent ?
+                            <p>
+                                <strong>Previous Event:</strong> ({previousEvent.start_time})
+                            {previousEvent.details}
+                            </p>
+                            : null
+                        }
+                        {nextEvent ?
+                            <p>
+                                <strong>Next Event:</strong> ({nextEvent.start_time})
+                            {nextEvent.details}
+                            </p>
+                            : null
+                        }
+                    </div>
                 </div>
                 <div className="app-card-bottom">
                     <Link to={`/applications/${this.job.id}`}>
@@ -100,7 +105,7 @@ class ApplicationCard extends Component {
                     </Link>
                 </div>
 
-            </React.Fragment>
+            </div>
         )
     }
 

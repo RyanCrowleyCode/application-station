@@ -1,0 +1,30 @@
+.app-card {
+    border: 1px solid black;
+    margin: 25px 10px;
+    width: 47%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    text-align: center;
+}
+
+.app-card-top {
+    border-bottom: 1px solid black;
+    padding: 3px;
+    text-align: center;
+}
+
+.app-card-middle {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-bottom: 0px;
+}
+
+
+
+.app-card-bottom button {
+    width: 100%;
+}

@@ -15,6 +15,9 @@ import React, { Component } from 'react'
 import apiManager from '../../modules/apiManager'
 import EditApplicationForm from './EditApplicationForm'
 
+// STYLES
+import './ApplicationDetail.css'
+
 class ApplicationDetail extends Component {
     appId = this.props.match.params.applicationId
 
@@ -64,7 +67,7 @@ class ApplicationDetail extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <div className="application-details">
                 <div className="application-header">
                     <h2><span>{this.state.companyName.toUpperCase()}</span> <span>{this.state.jobTitle}</span></h2>
                 </div>
@@ -89,7 +92,7 @@ class ApplicationDetail extends Component {
                         Delete
                         </button>
                 </div>
-            </React.Fragment>
+            </div>
         )
     }
 }
