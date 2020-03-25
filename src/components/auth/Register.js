@@ -73,7 +73,7 @@ class Register extends Component {
             <div className="jumbotron text-center welcome-view">
                 <header className="welcome-header">
                     <h2 className="font-weight-light text-center">Application Station</h2>
-                    <h5 className="font-weight-light text-center">New to Application Station? Sign up. It's free!</h5>
+                    <h6 className="font-weight-light text-center">New to Application Station? Sign up. It's free!</h6>
                 </header>
                 <form
                     id="register-form"

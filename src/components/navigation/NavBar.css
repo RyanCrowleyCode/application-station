@@ -1,0 +1,21 @@
+.navbar {
+   background-color: #269440; 
+}
+
+.navbar h4 {
+    margin: 10px;
+    color: white;
+}
+
+.nav-link {
+    color: white;
+    transition: .1s;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+

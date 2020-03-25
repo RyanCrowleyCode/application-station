@@ -53,7 +53,7 @@ class Login extends Component {
                 <div className="jumbotron text-center welcome-view">
                     <header className="welcome-header">
                         <h2 className="font-weight-light text-center">Application Station</h2>
-                        <h5 className="font-weight-light text-center">Your Job Search Management Hub</h5>
+                        <h6 className="font-weight-light text-center">Your Job Search Management Hub</h6>
                     </header>
                     <form
                         id="login-form"

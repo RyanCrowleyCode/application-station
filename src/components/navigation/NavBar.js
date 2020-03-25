@@ -13,12 +13,14 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 // STYLES
+import './NavBar.css'
 
 class NavBar extends Component {
     render() {
         return (
             <nav className="navbar flex-md-nowrap p-0 shadow">
                 <div className="brand">
+                    
                     <h4>Application Station</h4>
                 </div>
                 {this.props.isLoggedIn ?
