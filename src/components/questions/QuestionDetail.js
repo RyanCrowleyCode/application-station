@@ -16,6 +16,7 @@ import apiManager from '../../modules/apiManager'
 
 // COMPONENTS
 import EditResponseForm from './EditResponseForm'
+import EditQuestionForm from './EditQuestionForm'
 
 
 class QuestionDetail extends Component {
@@ -74,11 +75,11 @@ class QuestionDetail extends Component {
                     </p>
                 </div>
                 <div className="buttons">
-                    {/* <EditQuestionForm
+                    <EditQuestionForm
                         key={'question'}
                         getQuestion={this.getQuestion}
                         questionId={this.questionId}
-                    /> */}
+                    />
                     <button
                         type="button"
                         className="btn btn-danger delete-list btn-sm"
