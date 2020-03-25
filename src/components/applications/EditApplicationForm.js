@@ -146,7 +146,7 @@ class EditApplicationForm extends Component {
                     show={this.state.open}
                     onHide={() => this.getThenUpdateState()}
                 >
-                    <Form >
+                    <Form className="modal-form">
                         <h2>Edit Application</h2>
                         <Form.Group>
                             <Form.Label>Company</Form.Label>

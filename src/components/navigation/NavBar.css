@@ -1,0 +1,46 @@
+.navbar {
+   background-color: #269440; 
+}
+
+.navbar h4 {
+    margin: 10px;
+    color: white;
+}
+
+.nav-link {
+    color: white;
+    transition: .1s;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.train-logo {
+    width: 35px;
+    height: auto;
+}
+
+@media (max-width: 667px) {
+    .navbar {
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+@media (max-width: 400px) {
+    .nav-link {
+        font-size: .93em;
+    }
+
+}
+
+@media (max-width: 350px) {
+    .nav-link {
+        font-size: .699em;
+    }
+
+}

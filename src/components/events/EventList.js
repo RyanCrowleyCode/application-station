@@ -36,19 +36,23 @@ class EventList extends Component {
 
     componentDidMount() {
         apiManager.get("jobs")
-        .then(jobs => {
-            this.setState({ jobs: jobs})
-            this.getEvents()
-        })
+            .then(jobs => {
+                this.setState({ jobs: jobs })
+                this.getEvents()
+            })
     }
 
     render() {
         return (
             <React.Fragment>
-                <h2>Events</h2>
-                <EventForm 
-                    getEvents={this.getEvents}
-                />
+                <div className="top-of-page">
+                    <h2 className="page-title">Events</h2>
+                    <div className="top-of-page-button">
+                        <EventForm
+                            getEvents={this.getEvents}
+                        />
+                    </div>
+                </div>
                 <section className="event-list">
                     {this.state.events.map(event =>
                         <EventCard

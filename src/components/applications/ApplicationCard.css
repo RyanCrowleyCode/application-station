@@ -1,18 +1,31 @@
 .app-card {
-    border: 1px solid black;
+    /* border: 1px solid rgb(60, 59, 59); */
     margin: 25px 10px;
-    width: 47%;
-    min-width: 300px;
+    width: 45%;
+    min-width: 370px;
+    max-width: 450px;
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
     text-align: center;
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px; /* rounded corners */
 }
 
 .app-card-top {
-    border-bottom: 1px solid black;
     padding: 3px;
     text-align: center;
+    margin-bottom: 10px;
+    background-color: rgb(227, 227, 227);
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2);
+}
+
+.app-card-top h5 {
+    margin-top: 5px;
+    font-size: 1em;
+    font-weight: bold;
 }
 
 .app-card-middle {
@@ -20,7 +33,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     padding: 10px;
-    margin-bottom: 0px;
+    margin: 10px 0px 0px 0px;
 }
 
 .app-card-events p {
@@ -28,5 +41,32 @@
 }
 
 .app-card-bottom button {
+    margin-top: 20px;
     width: 100%;
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px; /* rounded corners */
+
 }
+
+
+
+@media (max-width: 450px) {
+    .app-card {
+        min-width: 315px;
+    }
+
+    .app-card-top {
+        min-width: 315px;
+    }
+    
+}@media (max-width: 370px) {
+    .app-card {
+        min-width: 300px;
+    }
+
+    .app-card-top {
+        min-width: 300px;
+    }
+}
+

@@ -1,12 +1,80 @@
 .event-card {
-    border: 1px solid black;
+    min-width: 500px;
+    max-width: 1000px;
+    margin: 10px; 
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+    border-radius: 10px; /* rounded corners */
+    background-color: rgb(227, 227, 227);
+}
+
+.event-card-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 370px;
+    max-width: 1000px;
+    margin: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+    border-radius: 10px; /* rounded corners */ 
+    background-color: white;
+}
+
+.event-card-content-top {
     display: flex;
     justify-content: space-between;
-    min-width: 300px;
-    max-width: 900px;
-    margin: 10px; 
+}
+
+.event-left, .event-right {
+    padding: 10px;
+    margin: 10px;
+}
+
+.event-card-content-bottom h5 {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 .event-card .buttons {
-    text-align: right;
+    display: flex;
+    justify-content: center;    
+}
+
+
+.past-event {
+    color: grey;
+}
+
+@media (max-width: 500px) {
+    .event-card {
+        min-width: 400px;
+        width: 400px;
+    }
+
+    .event-card-content {
+        min-width: 395px;
+        width: 395px;
+    }
+}
+
+@media (max-width: 400px) {
+    .event-card {
+        min-width: 350px;
+        width: 350px;
+    }
+
+    .event-card-content {
+        min-width: 345px;
+        width: 345px;
+    }
+}
+
+@media (max-width: 350px) {
+    .event-card {
+        min-width: 300px;
+        width: 300px;
+    }
+
+    .event-card-content {
+        min-width: 295px;
+        width: 295px;
+    }
 }

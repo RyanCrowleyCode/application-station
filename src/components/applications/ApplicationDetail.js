@@ -71,7 +71,7 @@ class ApplicationDetail extends Component {
         return (
             <div className="application-details">
                 <div className="application-header">
-                    <h2><span>{this.state.companyName.toUpperCase()}</span> <span>{this.state.jobTitle}</span></h2>
+                    <h2 className="page-title"><span>{this.state.companyName.toUpperCase()}</span> <span>{this.state.jobTitle}</span></h2>
                 </div>
                 <div className="application-status">
                     <p>Status: {this.state.status}</p>

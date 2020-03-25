@@ -21,6 +21,8 @@ import apiManager from '../../modules/apiManager'
 import './EventCard.css'
 
 class EventCard extends Component {
+    now = new Date().toISOString()
+
     event = this.props.event
     eventId = this.props.event.id
 
@@ -80,33 +82,41 @@ class EventCard extends Component {
 
     render() {
         return (
-            <div className="event-card">
-                <div className="event-left">
-                    <div className="event-job">
-                        <h5><span>{this.state.companyName.toUpperCase()}</span> <span>{this.state.jobTitle}</span></h5>
-                        <p>{this.state.details}</p>
+            <div className={`event-card 
+                ${this.state.endTime < this.now ? "past-event" : null}`}>
+                <div className="event-card-content">
+                    <div className="event-card-content-top">
+                        <div className="event-left">
+                            <div className="event-job">
+                                <p>{this.state.companyName.toUpperCase()}</p>
+                                <p>{this.state.jobTitle}</p>
+                            </div>
+                        </div>
+                        <div className="event-right">
+                            <p>Start: {this.state.startTime}</p>
+                            <p>End: {this.state.endTime}</p>
+                        </div>
                     </div>
-                </div>
-                <div className="event-right">
-                    <div className="buttons">
-                        <EditEventForm
-                            jobs={this.props.jobs}
-                            key={`event_${this.eventId}`}
-                            getJobUpdateState={this.getJobUpdateState}
-                            getEventUpdateState={this.getEventUpdateState}
-                            eventId={this.eventId}
-                        />
-                        <button
-                            type="button"
-                            className="btn btn-danger delete-list btn-sm"
-                            onClick={() => this.handleDeleteEvent()}
-                            disabled={this.state.loadingStatus}
-                        >
-                            Delete
-                        </button>
+                    <div className="event-card-content-bottom">
+                        <h5>** {this.state.details} **</h5>
+                        <div className="buttons">
+                            <EditEventForm
+                                jobs={this.props.jobs}
+                                key={`event_${this.eventId}`}
+                                getJobUpdateState={this.getJobUpdateState}
+                                getEventUpdateState={this.getEventUpdateState}
+                                eventId={this.eventId}
+                            />
+                            <button
+                                type="button"
+                                className="btn btn-danger delete-list btn-sm"
+                                onClick={() => this.handleDeleteEvent()}
+                                disabled={this.state.loadingStatus}
+                            >
+                                Delete
+                            </button>
+                        </div>
                     </div>
-                    <p>Start: {this.state.startTime}</p>
-                    <p>End: {this.state.endTime}</p>
                 </div>
             </div>
         )

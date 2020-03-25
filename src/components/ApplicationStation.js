@@ -22,6 +22,7 @@ import React, { Component } from 'react'
 
 // STYLES
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './ApplicationStation.css'
 
 // COMPONENTS
 import NavBar from './navigation/NavBar'

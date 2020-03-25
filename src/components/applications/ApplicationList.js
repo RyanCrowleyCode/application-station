@@ -43,10 +43,14 @@ class ApplicationList extends Component {
     render() {
         return (
             <React.Fragment>
-                <h2>Applications</h2>
-                <ApplicationForm
-                    getApplications={this.getApplications}
-                />
+                <div className="top-of-page">
+                    <h2 className="page-title">Applications</h2>
+                    <div className="top-of-page-button">
+                        <ApplicationForm
+                            getApplications={this.getApplications}
+                        />
+                    </div>
+                </div>
                 <section className="application-list">
                     {this.state.applications.map(job =>
                         <ApplicationCard

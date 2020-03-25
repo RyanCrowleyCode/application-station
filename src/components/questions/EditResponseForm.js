@@ -23,6 +23,7 @@ class EditResponseForm extends Component {
         question: '',
         isFromInterviewer: false,
         response: '',
+        buttonLabel: "Add Response",
         loadingStatus: false,
         open: false
     }
@@ -36,17 +37,21 @@ class EditResponseForm extends Component {
     getThenUpdateState = () => {
         apiManager.get(`questions/${this.questionId}`)
             .then(question => {
-                question.answer !== undefined && question.answer !== null ?
+                question.answer !== undefined
+                    && question.answer !== null
+                    && question.answer !== "" ?
                     this.setState({
                         question: question.question,
                         isFromInterviewer: question.is_from_interviewer,
                         response: question.answer,
+                        buttonLabel: "Update Response",
                         loadingStatus: false,
                         open: false
                     })
                     : this.setState({
                         question: question.question,
                         isFromInterviewer: question.is_from_interviewer,
+                        buttonLabel: "Add Response",
                         loadingStatus: false,
                         open: false
                     })
@@ -87,8 +92,7 @@ class EditResponseForm extends Component {
                     className="edit-response-button btn btn-success btn-sm"
                     onClick={() => this.setState({ open: true })}
                     disabled={this.state.loadingStatus}
-                >
-                    Update Response
+                >{this.state.buttonLabel}
                 </button>
                 <Modal
                     show={this.state.open}
