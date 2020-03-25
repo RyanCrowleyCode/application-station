@@ -14,6 +14,7 @@ import React, { Component } from 'react'
 import authApiManager from './authApiManager'
 
 // STYLES
+import './auth.css'
 
 
 class Login extends Component {
@@ -52,6 +53,7 @@ class Login extends Component {
                 <div className="jumbotron text-center welcome-view">
                     <header className="welcome-header">
                         <h2 className="font-weight-light text-center">Application Station</h2>
+                        <h5 className="font-weight-light text-center">Your Job Search Management Hub</h5>
                     </header>
                     <form
                         id="login-form"
@@ -75,7 +77,7 @@ class Login extends Component {
                         <button
                             type="submit"
                             value="Submit"
-                            className="btn-primary">
+                            className="btn-success">
                             Login
                     </button>
                     </form>

@@ -16,6 +16,7 @@ import authApiManager from './authApiManager'
 import createDefaultQuestions from '../../modules/defaultQuestions'
 
 // STYLES
+import './auth.css'
 
 class Register extends Component {
     state = {
@@ -72,7 +73,7 @@ class Register extends Component {
             <div className="jumbotron text-center welcome-view">
                 <header className="welcome-header">
                     <h2 className="font-weight-light text-center">Application Station</h2>
-                    <h4 className="font-weight-light text-center">New to Application Station? Sign up. It's free!</h4>
+                    <h5 className="font-weight-light text-center">New to Application Station? Sign up. It's free!</h5>
                 </header>
                 <form
                     id="register-form"
@@ -133,7 +134,7 @@ class Register extends Component {
                     <button
                         type="submit"
                         value="Submit"
-                        className="btn-primary"
+                        className="btn-success"
                         disabled={this.state.loadingStatus}
                     >
                         Submit
