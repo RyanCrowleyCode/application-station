@@ -18,6 +18,9 @@ import apiManager from '../../modules/apiManager'
 import EditResponseForm from './EditResponseForm'
 import EditQuestionForm from './EditQuestionForm'
 
+// STYLES
+import './QuestionDetail.css'
+
 
 class QuestionDetail extends Component {
     questionId = this.props.match.params.questionId
@@ -74,6 +77,17 @@ class QuestionDetail extends Component {
                             : "Me to the Interviewer"}
                     </p>
                 </div>
+                <div className="question-detail-response">
+                    <EditResponseForm
+                        key={'response'}
+                        getQuestion={this.getQuestion}
+                        questionId={this.questionId}
+                    />
+
+                    <p>
+                        {this.state.response}
+                    </p>
+                </div>
                 <div className="buttons">
                     <EditQuestionForm
                         key={'question'}
@@ -88,17 +102,6 @@ class QuestionDetail extends Component {
                     >
                         Delete
                         </button>
-                </div>
-                <div className="question-detail-bottom">
-                    <h6>Response</h6>
-                    <p className="question-detail-response">
-                        {this.state.response}
-                    </p>
-                    <EditResponseForm
-                        key={'response'}
-                        getQuestion={this.getQuestion}
-                        questionId={this.questionId}
-                    />
                 </div>
             </div>
         )

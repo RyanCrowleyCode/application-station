@@ -88,7 +88,7 @@ class EditResponseForm extends Component {
                     onClick={() => this.setState({ open: true })}
                     disabled={this.state.loadingStatus}
                 >
-                    Update
+                    Update Response
                 </button>
                 <Modal
                     show={this.state.open}
