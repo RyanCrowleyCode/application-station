@@ -20,7 +20,7 @@ class NavBar extends Component {
         return (
             <nav className="navbar flex-md-nowrap p-0 shadow">
                 <div className="brand">
-                    
+                    <img className="train-logo" src={require("../../images/application-station-logo.png")} alt="Train Logo" />
                     <h4>Application Station</h4>
                 </div>
                 {this.props.isLoggedIn ?
