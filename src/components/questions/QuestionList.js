@@ -43,7 +43,7 @@ class QuestionList extends Component {
     render() {
         return (
             <React.Fragment>
-                <h2>Questions</h2>
+                <h2 className="page-title">Questions</h2>
                 <QuestionForm
                     getQuestions={this.getQuestions}
                 />

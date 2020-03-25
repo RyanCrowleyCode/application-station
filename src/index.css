@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.page-title {
+ text-align: center;
+ margin: 25px;
+}
+
+.top-of-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-of-page-button {
+  text-align: center;
+  margin: 20px 0px 30px;
+}

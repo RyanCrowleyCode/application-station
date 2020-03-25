@@ -1,13 +1,16 @@
 .app-card {
-    border: 1px solid black;
+    /* border: 1px solid rgb(60, 59, 59); */
     margin: 25px 10px;
     width: 45%;
-    min-width: 315px;
+    min-width: 370px;
     max-width: 450px;
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
     text-align: center;
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px; /* rounded corners */
 }
 
 .app-card-top {
@@ -29,5 +32,15 @@
 }
 
 .app-card-bottom button {
-    width: 100%;
+    width:50%;
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px; /* rounded corners */
+
+}
+
+@media (max-width: 370px) {
+    .app-card {
+        min-width: 315px;
+    }
 }
