@@ -36,7 +36,7 @@ class EditResponseForm extends Component {
     getThenUpdateState = () => {
         apiManager.get(`questions/${this.questionId}`)
             .then(question => {
-                question.answer !== undefined ?
+                question.answer !== undefined && question.answer !== null ?
                     this.setState({
                         question: question.question,
                         isFromInterviewer: question.is_from_interviewer,
