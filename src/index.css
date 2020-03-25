@@ -14,21 +14,3 @@ code {
     monospace;
 }
 
-.page-title {
- text-align: center;
- margin: 25px;
-}
-
-.top-of-page {
-  display: flex;
-  flex-direction: column;
-}
-
-.top-of-page-button {
-  text-align: center;
-  margin: 10px 0px 30px;
-}
-
-.modal-form {
-  padding: 10px;
-}

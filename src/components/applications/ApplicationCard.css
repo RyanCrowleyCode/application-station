@@ -25,6 +25,7 @@
 .app-card-top h5 {
     margin-top: 5px;
     font-size: 1em;
+    font-weight: bold;
 }
 
 .app-card-middle {
@@ -48,14 +49,24 @@
 
 }
 
-@media (max-width: 370px) {
+
+
+@media (max-width: 450px) {
     .app-card {
         min-width: 315px;
     }
-}
 
-@media (max-width: 370px) {
     .app-card-top {
         min-width: 315px;
     }
+    
+}@media (max-width: 370px) {
+    .app-card {
+        min-width: 300px;
+    }
+
+    .app-card-top {
+        min-width: 300px;
+    }
 }
+

@@ -21,6 +21,8 @@ import apiManager from '../../modules/apiManager'
 import './EventCard.css'
 
 class EventCard extends Component {
+    now = new Date().toISOString()
+
     event = this.props.event
     eventId = this.props.event.id
 
@@ -80,13 +82,14 @@ class EventCard extends Component {
 
     render() {
         return (
-            <div className="event-card">
+            <div className={`event-card 
+                ${this.state.endTime < this.now ? "past-event" : null}`}>
                 <div className="event-card-content">
                     <div className="event-card-content-top">
                         <div className="event-left">
                             <div className="event-job">
-                                <h5>{this.state.companyName.toUpperCase()} <br />{this.state.jobTitle}</h5>
-                                <p>{this.state.details}</p>
+                                <p>{this.state.companyName.toUpperCase()}</p>
+                                <p>{this.state.jobTitle}</p>
                             </div>
                         </div>
                         <div className="event-right">
@@ -95,6 +98,7 @@ class EventCard extends Component {
                         </div>
                     </div>
                     <div className="event-card-content-bottom">
+                        <h5>** {this.state.details} **</h5>
                         <div className="buttons">
                             <EditEventForm
                                 jobs={this.props.jobs}

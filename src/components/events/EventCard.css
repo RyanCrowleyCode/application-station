@@ -28,13 +28,19 @@
     margin: 10px;
 }
 
-h5 {
-    font-size: 1em;
+.event-card-content-bottom h5 {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 .event-card .buttons {
     display: flex;
     justify-content: center;    
+}
+
+
+.past-event {
+    color: grey;
 }
 
 @media (max-width: 500px) {
