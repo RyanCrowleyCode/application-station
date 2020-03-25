@@ -23,4 +23,24 @@
     height: auto;
 }
 
+@media (max-width: 667px) {
+    .navbar {
+        display: flex;
+        justify-content: center;
+    }
 
+}
+
+@media (max-width: 400px) {
+    .nav-link {
+        font-size: .93em;
+    }
+
+}
+
+@media (max-width: 350px) {
+    .nav-link {
+        font-size: .699em;
+    }
+
+}
