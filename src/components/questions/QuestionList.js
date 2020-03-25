@@ -28,7 +28,11 @@ class QuestionList extends Component {
     getQuestions = () => {
         apiManager.get("questions")
             .then(questions => {
-                this.setState({ questions: questions })
+                let reverseQuestions = []
+                for (let i = questions.length -1; i >= 0; i--) {
+                    reverseQuestions.push(questions[i])
+                }
+                this.setState({ questions: reverseQuestions })
             })
     }
 

@@ -136,7 +136,7 @@ class EditApplicationForm extends Component {
             <React.Fragment>
                 <button
                     type="button"
-                    className="edit-application-button btn btn-success delete-list btn-sm"
+                    className="edit-application-button btn btn-success btn-sm"
                     onClick={() => this.setState({ open: true })}
                     disabled={this.state.loadingStatus}
                 >

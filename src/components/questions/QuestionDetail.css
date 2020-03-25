@@ -1,0 +1,32 @@
+.question-details {
+    margin: 15px;
+}
+
+.question-detail-question {
+    margin: 20px;
+    font-size: 1.7em;
+}
+
+.question-detail-author {
+    font-size: 1.2em;
+}
+
+.question-detail-top {
+    text-align: center;
+    margin: 10px 10px 30px;
+}
+
+.question-detail-response {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.question-detail-response p {
+    border: 1px solid black;
+    min-height: 150px;
+}
+
+.question-details .buttons {
+    margin: 20px;
+    text-align: center;
+}

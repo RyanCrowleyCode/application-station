@@ -101,7 +101,6 @@ class EventForm extends Component {
     }
 
     render() {
-        console.log(this.state.startTime)
         return (
             <React.Fragment>
                 <Button
