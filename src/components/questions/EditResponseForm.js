@@ -37,9 +37,9 @@ class EditResponseForm extends Component {
     getThenUpdateState = () => {
         apiManager.get(`questions/${this.questionId}`)
             .then(question => {
-                question.answer !== undefined 
-                && question.answer !== null
-                && question.answer !== "" ?
+                question.answer !== undefined
+                    && question.answer !== null
+                    && question.answer !== "" ?
                     this.setState({
                         question: question.question,
                         isFromInterviewer: question.is_from_interviewer,
@@ -85,7 +85,7 @@ class EditResponseForm extends Component {
     }
 
     render() {
-\        return (
+        return (
             <React.Fragment>
                 <button
                     type="button"
