@@ -71,7 +71,7 @@ class ApplicationCard extends Component {
         return (
             <div className="app-card">
                 <div className="app-card-top">
-                    <h5><span>{(this.job.company.name).toUpperCase()}</span> | <span>{this.job.title}</span></h5>
+                    <h5>{(this.job.company.name).toUpperCase()} | {this.job.title}</h5>
                 </div>
                 <div className="app-card-middle">
                     <p><strong>Status:</strong> {this.job.status.status}</p>

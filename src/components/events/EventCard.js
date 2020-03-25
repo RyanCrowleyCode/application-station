@@ -81,32 +81,38 @@ class EventCard extends Component {
     render() {
         return (
             <div className="event-card">
-                <div className="event-left">
-                    <div className="event-job">
-                        <h5><span>{this.state.companyName.toUpperCase()}</span> <span>{this.state.jobTitle}</span></h5>
-                        <p>{this.state.details}</p>
+                <div className="event-card-content">
+                    <div className="event-card-content-top">
+                        <div className="event-left">
+                            <div className="event-job">
+                                <h5>{this.state.companyName.toUpperCase()} <br />{this.state.jobTitle}</h5>
+                                <p>{this.state.details}</p>
+                            </div>
+                        </div>
+                        <div className="event-right">
+                            <p>Start: {this.state.startTime}</p>
+                            <p>End: {this.state.endTime}</p>
+                        </div>
                     </div>
-                </div>
-                <div className="event-right">
-                    <div className="buttons">
-                        <EditEventForm
-                            jobs={this.props.jobs}
-                            key={`event_${this.eventId}`}
-                            getJobUpdateState={this.getJobUpdateState}
-                            getEventUpdateState={this.getEventUpdateState}
-                            eventId={this.eventId}
-                        />
-                        <button
-                            type="button"
-                            className="btn btn-danger delete-list btn-sm"
-                            onClick={() => this.handleDeleteEvent()}
-                            disabled={this.state.loadingStatus}
-                        >
-                            Delete
-                        </button>
+                    <div className="event-card-content-bottom">
+                        <div className="buttons">
+                            <EditEventForm
+                                jobs={this.props.jobs}
+                                key={`event_${this.eventId}`}
+                                getJobUpdateState={this.getJobUpdateState}
+                                getEventUpdateState={this.getEventUpdateState}
+                                eventId={this.eventId}
+                            />
+                            <button
+                                type="button"
+                                className="btn btn-danger delete-list btn-sm"
+                                onClick={() => this.handleDeleteEvent()}
+                                disabled={this.state.loadingStatus}
+                            >
+                                Delete
+                            </button>
+                        </div>
                     </div>
-                    <p>Start: {this.state.startTime}</p>
-                    <p>End: {this.state.endTime}</p>
                 </div>
             </div>
         )

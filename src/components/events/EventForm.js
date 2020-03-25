@@ -114,7 +114,7 @@ class EventForm extends Component {
                     show={this.state.open}
                     onHide={() => this.close()}
                 >
-                    <Form >
+                    <Form className="modal-form">
                         <h2>New Event</h2>
                         <Form.Group>
                             <Form.Label>Details</Form.Label>

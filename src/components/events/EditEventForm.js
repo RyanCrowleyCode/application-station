@@ -133,7 +133,7 @@ class EditEventForm extends Component {
                     show={this.state.open}
                     onHide={() => this.getThenUpdateState()}
                 >
-                    <Form >
+                    <Form className="modal-form">
                         <h2>Edit Event</h2>
                         <Form.Group>
                             <Form.Label>Details</Form.Label>

@@ -131,7 +131,7 @@ class ApplicationForm extends Component {
                     show={this.state.open}
                     onHide={() => this.close()}
                 >
-                    <Form >
+                    <Form className="modal-form">
                         <h2>New Application</h2>
                         <Form.Group>
                             <Form.Label>Company</Form.Label>
