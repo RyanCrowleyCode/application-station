@@ -1,8 +1,9 @@
 .app-card {
     border: 1px solid black;
     margin: 25px 10px;
-    width: 47%;
-    min-width: 300px;
+    width: 45%;
+    min-width: 315px;
+    max-width: 450px;
     display: flex;
     flex-direction: column;
     justify-content: space-between; 

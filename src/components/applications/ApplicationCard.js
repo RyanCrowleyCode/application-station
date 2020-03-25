@@ -75,8 +75,10 @@ class ApplicationCard extends Component {
                 </div>
                 <div className="app-card-middle">
                     <p><strong>Status:</strong> {this.job.status.status}</p>
-                    <p><a href={this.job.link} target="_blank" rel="noopener noreferrer">View External Job Description</a></p>
-
+                    {this.job.link ?
+                        <p><a href={this.job.link} target="_blank" rel="noopener noreferrer">View External Job Description</a></p>
+                        : null
+                    }
                     <div className="app-card-events">
                         <Link to={'/events'}>
                             {previousEvent ?
