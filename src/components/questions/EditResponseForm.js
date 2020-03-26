@@ -51,6 +51,7 @@ class EditResponseForm extends Component {
                     : this.setState({
                         question: question.question,
                         isFromInterviewer: question.is_from_interviewer,
+                        response: '',
                         buttonLabel: "Add Response",
                         loadingStatus: false,
                         open: false
@@ -99,7 +100,7 @@ class EditResponseForm extends Component {
                     onHide={() => this.getThenUpdateState()}
                 >
                     <Form className="modal-form">
-                        <h2>Update Response</h2>
+                        <h2>{this.state.buttonLabel}</h2>
                         <Form.Group>
                             <Form.Label>Response</Form.Label>
                             <Form.Control
