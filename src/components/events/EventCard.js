@@ -17,6 +17,9 @@ import EditEventForm from './EditEventForm'
 // DATA
 import apiManager from '../../modules/apiManager'
 
+// MODULES
+import { printableDate } from '../../modules/helper'
+
 // STYLES
 import './EventCard.css'
 
@@ -88,13 +91,13 @@ class EventCard extends Component {
                     <div className="event-card-content-top">
                         <div className="event-left">
                             <div className="event-job">
-                                <p>{this.state.companyName.toUpperCase()}</p>
+                                <p><strong>{this.state.companyName.toUpperCase()}</strong></p>
                                 <p>{this.state.jobTitle}</p>
                             </div>
                         </div>
                         <div className="event-right">
-                            <p>Start: {this.state.startTime}</p>
-                            <p>End: {this.state.endTime}</p>
+                            <p><strong>Start:</strong> {printableDate(this.state.startTime)}</p>
+                            <p><strong>End:</strong> {printableDate(this.state.endTime)}</p>
                         </div>
                     </div>
                     <div className="event-card-content-bottom">
