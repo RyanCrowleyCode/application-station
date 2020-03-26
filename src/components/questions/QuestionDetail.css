@@ -17,13 +17,19 @@
 }
 
 .question-detail-response {
-    border: 1px solid black;
-    padding: 10px;
+    background-color: rgb(227, 227, 227);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+    border-radius: 10px; /* rounded corners */ 
+    padding: 2px;
 }
 
 .question-detail-response p {
-    border: 1px solid black;
+    background-color: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+    border-radius: 10px; /* rounded corners */
     min-height: 150px;
+    padding: 20px;
+    margin: 0px;
 }
 
 .question-details .buttons {
