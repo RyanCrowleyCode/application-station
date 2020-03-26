@@ -17,6 +17,9 @@ import { Link } from 'react-router-dom'
 // DATA
 import apiManager from '../../modules/apiManager'
 
+// MODULES
+import { printableDate } from '../../modules/helper'
+
 // STYLES
 import './ApplicationCard.css'
 
@@ -83,8 +86,8 @@ class ApplicationCard extends Component {
                         <Link to={'/events'}>
                             {previousEvent ?
                                 <p>
-                                    <strong>Previous Event:</strong> ({previousEvent.start_time})
-                            {previousEvent.details}
+                                    <strong>Previous Event:</strong> {printableDate(previousEvent.start_time)} 
+                                    <br />{previousEvent.details}
                                 </p>
                                 : null
                             }
@@ -92,8 +95,8 @@ class ApplicationCard extends Component {
                         <Link to={'/events'}>
                             {nextEvent ?
                                 <p>
-                                    <strong>Next Event:</strong> ({nextEvent.start_time})
-                            {nextEvent.details}
+                                    <strong>Next Event:</strong> {printableDate(nextEvent.start_time)}
+                                    <br />{nextEvent.details}
                                 </p>
                                 : null
                             }

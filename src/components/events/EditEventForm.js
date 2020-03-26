@@ -16,7 +16,7 @@ import { Form, Button, Modal } from 'react-bootstrap'
 import apiManager from '../../modules/apiManager'
 
 // MODULES
-import toDTL from '../../modules/helper'
+import { toDTL } from '../../modules/helper'
 
 class EditEventForm extends Component {
     eventId = this.props.eventId

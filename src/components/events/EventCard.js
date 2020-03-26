@@ -17,6 +17,9 @@ import EditEventForm from './EditEventForm'
 // DATA
 import apiManager from '../../modules/apiManager'
 
+// MODULES
+import { printableDate } from '../../modules/helper'
+
 // STYLES
 import './EventCard.css'
 
@@ -93,8 +96,8 @@ class EventCard extends Component {
                             </div>
                         </div>
                         <div className="event-right">
-                            <p>Start: {this.state.startTime}</p>
-                            <p>End: {this.state.endTime}</p>
+                            <p>Start: {printableDate(this.state.startTime)}</p>
+                            <p>End: {printableDate(this.state.endTime)}</p>
                         </div>
                     </div>
                     <div className="event-card-content-bottom">
