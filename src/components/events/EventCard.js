@@ -91,13 +91,13 @@ class EventCard extends Component {
                     <div className="event-card-content-top">
                         <div className="event-left">
                             <div className="event-job">
-                                <p>{this.state.companyName.toUpperCase()}</p>
+                                <p><strong>{this.state.companyName.toUpperCase()}</strong></p>
                                 <p>{this.state.jobTitle}</p>
                             </div>
                         </div>
                         <div className="event-right">
-                            <p>Start: {printableDate(this.state.startTime)}</p>
-                            <p>End: {printableDate(this.state.endTime)}</p>
+                            <p><strong>Start:</strong> {printableDate(this.state.startTime)}</p>
+                            <p><strong>End:</strong> {printableDate(this.state.endTime)}</p>
                         </div>
                     </div>
                     <div className="event-card-content-bottom">
