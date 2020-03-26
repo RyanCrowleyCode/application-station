@@ -77,9 +77,11 @@ class ApplicationDetail extends Component {
                     <p>Status: {this.state.status}</p>
                 </div>
                 <div className="application-link">
-                    <p><a href={this.state.link} target="_blank" rel="noopener noreferrer">{this.state.link}</a></p>
+                    {this.state.link ?
+                    <p><a href={this.state.link} target="_blank" rel="noopener noreferrer">View External Job Description</a></p>
+                    : null}
                 </div>
-                <p>{this.state.jobDescription}</p>
+                <p className="application-description">{this.state.jobDescription}</p>
                 <div className="buttons">
                     <EditApplicationForm
                         getApplication={this.getApplication}

@@ -1,8 +1,22 @@
 .application-details {
     text-align: center;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+    border-radius: 10px; /* rounded corners */ 
 }
 
 .application-header {
     text-align: center;
     margin: 10px;
 } 
+
+.application-details .application-description {
+    text-align: left;
+    padding: 30px;
+    
+}
+
+@media (max-width: 400px) {
+    h2 {
+        font-size: 1.8em;
+    }
+}
