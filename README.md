@@ -1,5 +1,7 @@
 # Application Station
 
+![ Login ](./src/images/LoginScreen.png)
+
 ## What is Application Station?
 
 Application Station is a single-page React application that assists users with their job search. Users can save Applications that they are interested in and keep track of their progress through applying, interviewing, and the final hiring decision. Users can track events related to each application, like "Applied on this day" or "Interview at the main office". Users can also practice asking and answering interview questions.
